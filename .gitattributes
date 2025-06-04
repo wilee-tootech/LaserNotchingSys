@@ -1,0 +1,6 @@
+BeamEditor6.sdf filter=lfs diff=lfs merge=lfs -text
+Debug/OBJECT/RCa03808 filter=lfs diff=lfs merge=lfs -text
+OBJECT/RCa12856 filter=lfs diff=lfs merge=lfs -text
+OBJECT/RCa13720 filter=lfs diff=lfs merge=lfs -text
+RCa02392 filter=lfs diff=lfs merge=lfs -text
+RCa08368 filter=lfs diff=lfs merge=lfs -text
