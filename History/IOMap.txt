@@ -1,0 +1,23 @@
+오후 4:48 2019-04-10
+ 패턴파일을 파일명과 일치시키기. 패턴 만들때 noname.plt 일경우 TEMP.PLT를 따로 만들어 놈.
+ 그리고, mrk 저장시 패턴파일명(*.plt)과 현재 파일이름(*.mrk)이 틀릴경우 TEMP.PLT를 현재 파일이름으로 변경함.
+
+ MOTF Over/Under Flow처리.
+ Marktread에서 Execulelist하고 난후, clear_fly_overflow함수 사용.
+ 한번에 Overflow Clear가 되지않음. 
+
+오후 3:54 2024-09-30
+MES 에 LINK_TEST_REPLY 로직 변경(string 으로 변환 후 송신)
+ + LINK_TEST_REPLY 일 경우  저장x 
+
+오후 2:08 2024-10-02
+1. 논플래그와 플래그의 커팅각도 따로 계산
+	- ID_UNFLAG_END 사용하지 않는 변수 사용
+	- 테스트X
+
+2. 1.5mm 하드코딩 -> 옵셋 추가
+	- Cutting Offset
+
+오후 18:27 2024-10-04
+ 2호기 SDIHEAD1 과 SDIHEAD2 코드 뒤집기
+	- HEAD1, HEAD2 및 보드넘버 뒤집기

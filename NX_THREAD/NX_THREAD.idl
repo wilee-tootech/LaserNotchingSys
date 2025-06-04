@@ -1,0 +1,10 @@
+// NX_THREAD.idl : NX_THREAD.dll의 형식 라이브러리 소스입니다.
+// 이 파일은 MIDL 컴파일러에 의해 처리되어
+// 형식 라이브러리(NX_THREAD.tlb)를 생성합니다.
+
+[ uuid(8515BC45-484C-407E-8083-493678941102), version(1.0) ]
+library NX_THREAD
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+};

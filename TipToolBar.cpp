@@ -1,0 +1,27 @@
+// TipToolBar.cpp: implementation of the CTipToolBar class.
+//
+//////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "beameditor6.h"
+#include "TipToolBar.h"
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[]=__FILE__;
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+CTipToolBar::CTipToolBar()
+{
+
+}
+
+CTipToolBar::~CTipToolBar()
+{
+
+}

@@ -1,0 +1,27 @@
+// DSize.cpp: implementation of the CDSize class.
+//
+//////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "beameditor6.h"
+#include "DSize.h"
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[]=__FILE__;
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+CDSize::CDSize()
+{
+
+}
+
+CDSize::~CDSize()
+{
+
+}

@@ -1,0 +1,56 @@
+﻿빌드 시작: 2025-06-04 오전 10:48:32
+     1>4 노드의 "D:\LWI\LaserNotchingSys(250604_0949)\NX_CONFIRM\NX_CONFIRM.vcxproj" 프로젝트(Build 대상)입니다.
+       프로젝트 파일에 ToolsVersion="15.0"이(가) 들어 있습니다. 이 도구 집합은 알 수 없거나 누락되었을 수 있습니다. 이 경우 적절한 버전의 MSBuild를 설치하여 이 문제를 해결할 수 있습니다. 그렇지 않으면 빌드가 정책상의 이유로 특정 ToolsVersion이 될 수 있습니다. 프로젝트에 ToolsVersion="4.0"이 들어 있는 것으로 간주합니다. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkId=291333을 참조하십시오.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _AFXEXT /D NX_CONFIRM_EXPORTS /D _WINDLL /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\OBJECT\NX_CONFIRM_D.pch" /Fo"Debug\OBJECT\\" /Fd"Debug\OBJECT\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _AFXEXT /D NX_CONFIRM_EXPORTS /D _WINDLL /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\OBJECT\NX_CONFIRM_D.pch" /Fo"Debug\OBJECT\\" /Fd"Debug\OBJECT\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Confirm.cpp ExtDllState.cpp EXTERN\cttextctrl.cpp EXTERN\FileMgr.cpp NX_CONFIRM.cpp
+         NX_CONFIRM.cpp
+         FileMgr.cpp
+         cttextctrl.cpp
+         ExtDllState.cpp
+         Confirm.cpp
+         코드를 생성하고 있습니다...
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.0\bin\x86\rc.exe /D _DEBUG /D _AFXDLL /l"0x0412" /IDebug\OBJECT\ /nologo /fo"Debug\OBJECT\NX_CONFIRM.res" NX_CONFIRM.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Debug\NX_CONFIRM_D.dll" /INCREMENTAL /NOLOGO /DEF:".\NX_CONFIRM.def" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"Debug\NX_CONFIRM_D.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Debug\NX_CONFIRM_D.lib" /MACHINE:X86 /DLL Debug\OBJECT\NX_CONFIRM.res
+         Debug\OBJECT\Confirm.obj
+         Debug\OBJECT\ExtDllState.obj
+         Debug\OBJECT\cttextctrl.obj
+         Debug\OBJECT\FileMgr.obj
+         Debug\OBJECT\NX_CONFIRM.obj
+         Debug\OBJECT\stdafx.obj
+            Debug\NX_CONFIRM_D.lib 라이브러리 및 Debug\NX_CONFIRM_D.exp 개체를 생성하고 있습니다.
+         NX_CONFIRM.vcxproj -> D:\LWI\LaserNotchingSys(250604_0949)\NX_CONFIRM\Debug\NX_CONFIRM_D.dll
+       PostBuildEvent:
+         xcopy /f /y *.h "D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_CONFIRM\"
+         xcopy /f /y D:\LWI\LaserNotchingSys(250604_0949)\NX_CONFIRM\EXTERN\*.h "D:\LWI\LaserNotchingSys(250604_0949)\INCLUDE\NX_CONFIRM\EXTERN\"
+         xcopy /f /y Debug\\NX_CONFIRM_D.lib "D:\LWI\LaserNotchingSys(250604_0949)\LIBRARY\NX_CONFIRM\"
+         xcopy /f /y Debug\NX_CONFIRM_D.dll "D:\LWI\LaserNotchingSys(250604_0949)\Debug\"
+         del "D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_CONFIRM\Stdafx.h"
+         del "D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_CONFIRM\targetver.h"
+         del "D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_CONFIRM\resource.h"
+         del "D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_CONFIRM\NX_CONFIRM.h"
+         :VCEnd
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_CONFIRM\Confirm.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_CONFIRM\Confirm.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_CONFIRM\ExtDllState.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_CONFIRM\ExtDllState.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_CONFIRM\resource.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_CONFIRM\resource.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_CONFIRM\stdafx.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_CONFIRM\stdafx.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_CONFIRM\targetver.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_CONFIRM\targetver.h
+         5개 파일이 복사되었습니다.
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_CONFIRM\EXTERN\cttextctrl.h -> D:\LWI\LaserNotchingSys(250604_0949)\INCLUDE\NX_CONFIRM\EXTERN\cttextctrl.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_CONFIRM\EXTERN\FileMgr.h -> D:\LWI\LaserNotchingSys(250604_0949)\INCLUDE\NX_CONFIRM\EXTERN\FileMgr.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_CONFIRM\EXTERN\_Font.h -> D:\LWI\LaserNotchingSys(250604_0949)\INCLUDE\NX_CONFIRM\EXTERN\_Font.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_CONFIRM\EXTERN\_Picture.h -> D:\LWI\LaserNotchingSys(250604_0949)\INCLUDE\NX_CONFIRM\EXTERN\_Picture.h
+         4개 파일이 복사되었습니다.
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_CONFIRM\Debug\NX_CONFIRM_D.lib -> D:\LWI\LaserNotchingSys(250604_0949)\LIBRARY\NX_CONFIRM\NX_CONFIRM_D.lib
+         1개 파일이 복사되었습니다.
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_CONFIRM\Debug\NX_CONFIRM_D.dll -> D:\LWI\LaserNotchingSys(250604_0949)\Debug\NX_CONFIRM_D.dll
+         1개 파일이 복사되었습니다.
+         D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_CONFIRM\NX_CONFIRM.h을(를) 찾을 수 없습니다.
+     1>"D:\LWI\LaserNotchingSys(250604_0949)\NX_CONFIRM\NX_CONFIRM.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:08.62

@@ -1,0 +1,40 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Options - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x412 /fo"Debug/Options.res" /d "_DEBUG" /d "_AFXDLL" "D:\Project\BeamEditor\Options\Options.rc"" 
+Creating temporary file "C:\Users\6\AppData\Local\Temp\RSPFECD.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/Options.pdb" /debug /machine:I386 /out:"Debug/Options.exe" /pdbtype:sept 
+.\Debug\DlgAmkorDir.obj
+.\Debug\DlgLaserSource.obj
+.\Debug\DlgLogSetting.obj
+.\Debug\DlgParaColor.obj
+.\Debug\DlgSelectDir.obj
+.\Debug\DlgView.obj
+.\Debug\FileReader.obj
+.\Debug\FileTreeCtrl.obj
+.\Debug\FileWriter.obj
+.\Debug\Option.obj
+.\Debug\Options.obj
+.\Debug\OptionsDlg.obj
+.\Debug\StaticColor.obj
+.\Debug\StdAfx.obj
+.\Debug\Options.res
+]
+Creating command line "link.exe @C:\Users\6\AppData\Local\Temp\RSPFECD.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Linking...
+
+
+
+<h3>Results</h3>
+Options.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

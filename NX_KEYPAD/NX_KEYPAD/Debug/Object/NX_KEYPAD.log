@@ -1,0 +1,69 @@
+﻿빌드 시작: 2025-06-04 오전 10:48:32
+     1>3 노드의 "D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\NX_KEYPAD.vcxproj" 프로젝트(Build 대상)입니다.
+       프로젝트 파일에 ToolsVersion="15.0"이(가) 들어 있습니다. 이 도구 집합은 알 수 없거나 누락되었을 수 있습니다. 이 경우 적절한 버전의 MSBuild를 설치하여 이 문제를 해결할 수 있습니다. 그렇지 않으면 빌드가 정책상의 이유로 특정 ToolsVersion이 될 수 있습니다. 프로젝트에 ToolsVersion="4.0"이 들어 있는 것으로 간주합니다. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkId=291333을 참조하십시오.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D NX_KEY_PAD_EXPORTS /D WIN32 /D _WINDOWS /D _DEBUG /D _AFXEXT /D _WINDLL /D _MBCS /D _AFXDLL /Gm- /EHsc /MDd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\Object\NX_KEYPAD_D.pch" /Fo"Debug\Object\\" /Fd"Debug\Object\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D NX_KEY_PAD_EXPORTS /D WIN32 /D _WINDOWS /D _DEBUG /D _AFXEXT /D _WINDLL /D _MBCS /D _AFXDLL /Gm- /EHsc /MDd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Object\NX_KEYPAD_D.pch" /Fo"Debug\Object\\" /Fd"Debug\Object\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt AlphaKeyPad.cpp ExtDllState.cpp EXTERN\BtnST.cpp EXTERN\cttextctrl.cpp EXTERN\ShadeButtonST.cpp EXTERN\xDib.cpp InputEditPad.cpp NumberKeyPad.cpp NX_KEYPAD.cpp
+         AlphaKeyPad.cpp
+         ExtDllState.cpp
+         BtnST.cpp
+         cttextctrl.cpp
+         ShadeButtonST.cpp
+         xDib.cpp
+         InputEditPad.cpp
+         NumberKeyPad.cpp
+         NX_KEYPAD.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.0\bin\x86\rc.exe /D _DEBUG /D _AFXDLL /l"0x0412" /IDebug\Object\ /nologo /fo"Debug\Object\NX_KEYPAD.res" NX_KEYPAD.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Debug\NX_KEYPAD_D.dll" /INCREMENTAL:NO /NOLOGO /DEF:".\NX_KEYPAD.def" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"Debug\NX_KEYPAD_D.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Debug\NX_KEYPAD_D.lib" /MACHINE:X86 /DLL Debug\Object\NX_KEYPAD.res
+         Debug\Object\AlphaKeyPad.obj
+         Debug\Object\ExtDllState.obj
+         Debug\Object\BtnST.obj
+         Debug\Object\cttextctrl.obj
+         Debug\Object\ShadeButtonST.obj
+         Debug\Object\xDib.obj
+         Debug\Object\InputEditPad.obj
+         Debug\Object\NumberKeyPad.obj
+         Debug\Object\NX_KEYPAD.obj
+         Debug\Object\stdafx.obj
+            Debug\NX_KEYPAD_D.lib 라이브러리 및 Debug\NX_KEYPAD_D.exp 개체를 생성하고 있습니다.
+         코드를 생성하고 있습니다.
+         코드를 생성했습니다.
+         NX_KEYPAD.vcxproj -> D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\Debug\NX_KEYPAD_D.dll
+       PostBuildEvent:
+         xcopy /f /y *.h "D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_KEYPAD\"
+         xcopy /f /y D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\EXTERN\*.h "D:\LWI\LaserNotchingSys(250604_0949)\INCLUDE\NX_KEYPAD\EXTERN\"
+         xcopy /f /y Debug\\NX_KEYPAD_D.lib "D:\LWI\LaserNotchingSys(250604_0949)\LIBRARY\NX_KEYPAD\"
+         xcopy /f /y Debug\NX_KEYPAD_D.dll "D:\LWI\LaserNotchingSys(250604_0949)\Debug\"
+         del "D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_KEYPAD\Stdafx.h"
+         del "D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_KEYPAD\targetver.h"
+         del "D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_KEYPAD\resource.h"
+         del "D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_KEYPAD\NX_KEYPAD.h"
+         :VCEnd
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\AlphaKeyPad.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_KEYPAD\AlphaKeyPad.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\ExtDllState.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_KEYPAD\ExtDllState.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\InputEditPad.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_KEYPAD\InputEditPad.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\NumberKeyPad.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_KEYPAD\NumberKeyPad.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\resource.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_KEYPAD\resource.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\stdafx.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_KEYPAD\stdafx.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\targetver.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_KEYPAD\targetver.h
+         7개 파일이 복사되었습니다.
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\EXTERN\BtnST.h -> D:\LWI\LaserNotchingSys(250604_0949)\INCLUDE\NX_KEYPAD\EXTERN\BtnST.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\EXTERN\cttextctrl.h -> D:\LWI\LaserNotchingSys(250604_0949)\INCLUDE\NX_KEYPAD\EXTERN\cttextctrl.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\EXTERN\ShadeButtonST.h -> D:\LWI\LaserNotchingSys(250604_0949)\INCLUDE\NX_KEYPAD\EXTERN\ShadeButtonST.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\EXTERN\xDib.h -> D:\LWI\LaserNotchingSys(250604_0949)\INCLUDE\NX_KEYPAD\EXTERN\xDib.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\EXTERN\_Font.h -> D:\LWI\LaserNotchingSys(250604_0949)\INCLUDE\NX_KEYPAD\EXTERN\_Font.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\EXTERN\_Picture.h -> D:\LWI\LaserNotchingSys(250604_0949)\INCLUDE\NX_KEYPAD\EXTERN\_Picture.h
+         6개 파일이 복사되었습니다.
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\Debug\NX_KEYPAD_D.lib -> D:\LWI\LaserNotchingSys(250604_0949)\LIBRARY\NX_KEYPAD\NX_KEYPAD_D.lib
+         1개 파일이 복사되었습니다.
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\Debug\NX_KEYPAD_D.dll -> D:\LWI\LaserNotchingSys(250604_0949)\Debug\NX_KEYPAD_D.dll
+         1개 파일이 복사되었습니다.
+         D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_KEYPAD\NX_KEYPAD.h을(를) 찾을 수 없습니다.
+     1>"D:\LWI\LaserNotchingSys(250604_0949)\NX_KEYPAD\NX_KEYPAD\NX_KEYPAD.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:08.51

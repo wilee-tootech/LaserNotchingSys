@@ -1,0 +1,4 @@
+// Microsoft Developer Studio generated Help ID include file.
+// Used by BeamEditor6.rc
+//
+#define HIDC_STATIC                     0x8069ffff    // IDD_DLG_POWER

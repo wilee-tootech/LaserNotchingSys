@@ -1,0 +1,45 @@
+﻿빌드 시작: 2025-06-04 오전 10:48:41
+     1>3 노드의 "D:\LWI\LaserNotchingSys(250604_0949)\NX_RECIPE_PATH\NX_RECIPE_PATH.vcxproj" 프로젝트(Build 대상)입니다.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _AFXEXT /D NX_RECIPE_PATH_EXPORTS /D _WINDLL /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\OBJECT\NX_RECIPE_PATH_D.pch" /Fo"Debug\OBJECT\\" /Fd"Debug\OBJECT\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _AFXEXT /D NX_RECIPE_PATH_EXPORTS /D _WINDLL /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\OBJECT\NX_RECIPE_PATH_D.pch" /Fo"Debug\OBJECT\\" /Fd"Debug\OBJECT\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt NX_RECIPE_PATH.cpp RecipePathManager.cpp
+         RecipePathManager.cpp
+         NX_RECIPE_PATH.cpp
+         코드를 생성하고 있습니다...
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.0\bin\x86\rc.exe /D _DEBUG /D _AFXDLL /l"0x0412" /IDebug\OBJECT\ /nologo /fo"Debug\OBJECT\NX_RECIPE_PATH.res" NX_RECIPE_PATH.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Debug\NX_RECIPE_PATH_D.dll" /INCREMENTAL /NOLOGO /DEF:".\NX_RECIPE_PATH.def" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"Debug\NX_RECIPE_PATH_D.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Debug\NX_RECIPE_PATH_D.lib" /MACHINE:X86 /DLL Debug\OBJECT\NX_RECIPE_PATH.res
+         Debug\OBJECT\NX_RECIPE_PATH.obj
+         Debug\OBJECT\RecipePathManager.obj
+         Debug\OBJECT\stdafx.obj
+            Debug\NX_RECIPE_PATH_D.lib 라이브러리 및 Debug\NX_RECIPE_PATH_D.exp 개체를 생성하고 있습니다.
+         NX_RECIPE_PATH.vcxproj -> D:\LWI\LaserNotchingSys(250604_0949)\NX_RECIPE_PATH\Debug\NX_RECIPE_PATH_D.dll
+       PostBuildEvent:
+         xcopy /f /y *.h "D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_RECIPE_PATH\"
+         xcopy /f /y D:\LWI\LaserNotchingSys(250604_0949)\NX_RECIPE_PATH\EXTERN\*.h "D:\LWI\LaserNotchingSys(250604_0949)\INCLUDE\NX_RECIPE_PATH\EXTERN\"
+         xcopy /f /y Debug\\NX_RECIPE_PATH_D.lib "D:\LWI\LaserNotchingSys(250604_0949)\LIBRARY\NX_RECIPE_PATH\"
+         xcopy /f /y Debug\NX_RECIPE_PATH_D.dll "D:\LWI\LaserNotchingSys(250604_0949)\Debug\"
+         del "D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_RECIPE_PATH\Stdafx.h"
+         del "D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_RECIPE_PATH\targetver.h"
+         del "D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_RECIPE_PATH\resource.h"
+         del "D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_RECIPE_PATH\NX_RECIPE_PATH.h"
+         :VCEnd
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_RECIPE_PATH\RecipePathManager.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_RECIPE_PATH\RecipePathManager.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_RECIPE_PATH\Resource.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_RECIPE_PATH\Resource.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_RECIPE_PATH\stdafx.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_RECIPE_PATH\stdafx.h
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_RECIPE_PATH\targetver.h -> D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_RECIPE_PATH\targetver.h
+         4개 파일이 복사되었습니다.
+         파일을 찾을 수 없습니다-*.h
+         0개 파일이 복사되었습니다.
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_RECIPE_PATH\Debug\NX_RECIPE_PATH_D.lib -> D:\LWI\LaserNotchingSys(250604_0949)\LIBRARY\NX_RECIPE_PATH\NX_RECIPE_PATH_D.lib
+         1개 파일이 복사되었습니다.
+         D:\LWI\LaserNotchingSys(250604_0949)\NX_RECIPE_PATH\Debug\NX_RECIPE_PATH_D.dll -> D:\LWI\LaserNotchingSys(250604_0949)\Debug\NX_RECIPE_PATH_D.dll
+         1개 파일이 복사되었습니다.
+         D:\LWI\LaserNotchingSys(250604_0949)\Include\NX_RECIPE_PATH\NX_RECIPE_PATH.h을(를) 찾을 수 없습니다.
+     1>"D:\LWI\LaserNotchingSys(250604_0949)\NX_RECIPE_PATH\NX_RECIPE_PATH.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:05.70

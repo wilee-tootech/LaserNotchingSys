@@ -1,0 +1,936 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <Keyword>MFCProj</Keyword>
+    <ProjectGuid>{B36A0667-0871-4136-9532-B030E63A0D7E}</ProjectGuid>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(MSBuildProjectDirectory)\Include\Hatch\CCDKm3-30\INCLUDE;$(MSBuildProjectDirectory)\Include\Hatch\CCDK-3-30\INCLUDE;$(IncludePath)</IncludePath>
+    <ReferencePath>$(MSBuildProjectDirectory)\Library\Hatch;$(ReferencePath)</ReferencePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IntDir>$(Configuration)\OBJECT\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>_RTCSCANALONE_;WIN32;NDEBUG;_WINDOWS;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;_RTC3_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\BeamEditor6.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>.\Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
+      <DisableSpecificWarnings>4819;4244;4005</DisableSpecificWarnings>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Release\BeamEditor6.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0412</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\BeamEditor6.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <SubSystem>Windows</SubSystem>
+      <IgnoreSpecificDefaultLibraries>LIBCD;MSVCRTD;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <OutputFile>.\Release\BeamEditor6.exe</OutputFile>
+      <AdditionalDependencies>mpr.lib;jpegd.lib;tiffd.lib;BarcodeDLL.lib;RTC3DLL.lib;PCI-Dask.lib;mnm91sw.lib;3nm91sw.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <MinimalRebuild>true</MinimalRebuild>
+      <PreprocessorDefinitions>_RTC6_;_AFX_SECURE_NO_DEPRECATE;WIN32;_DEBUG;_WINDOWS;__WINDOWS__;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\Debug\BeamEditor6.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>.\Debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DisableSpecificWarnings>4819;4244;4005</DisableSpecificWarnings>
+      <SDLCheck>true</SDLCheck>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>$(Solutiondir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Debug\BeamEditor6.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0412</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\BeamEditor6.bsc</OutputFile>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>$(SolutionDir)Library\NX_THREAD\NX_THREAD_D.lib;$(SolutionDir)Library\NX_UI\NX_UI_D.lib;$(SolutionDir)Library\\NX_KEYPAD\\NX_KEYPAD_D.lib;$(SolutionDir)Library\\NX_COMM\\NX_COMM_D.lib;$(SolutionDir)Library\\NX_LIGHT\\NX_LIGHT_D.lib;$(SolutionDir)Library\\NX_CONFIRM\\NX_CONFIRM_D.lib;$(SolutionDir)Library\NX_NOTIFY\NX_NOTIFY.lib;$(SolutionDir)Library\NX_SOCKET\NX_SOCKET_D.lib;$(SolutionDir)Library\NX_RECIPE_PATH\NX_RECIPE_PATH_D.lib;$(SolutionDir)Library\NX_LOGIN\NX_LOGIN_D.lib;chartdir50.lib;mpr.lib;Psapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <IgnoreSpecificDefaultLibraries>libcd.lib</IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="DlgPouchEdit.cpp" />
+    <ClCompile Include="BCMenu.cpp" />
+    <ClCompile Include="BeamEditor6.cpp" />
+    <ClCompile Include="BeamEditor6Doc.cpp" />
+    <ClCompile Include="BeamEditor6View.cpp" />
+    <ClCompile Include="Bin.cpp" />
+    <ClCompile Include="BitmapImg.cpp" />
+    <ClCompile Include="BitmapPickerCombo.cpp" />
+    <ClCompile Include="BitmapPicture.cpp" />
+    <ClCompile Include="BlinkStatic.cpp" />
+    <ClCompile Include="BoolArrConvertor.cpp" />
+    <ClCompile Include="BtnST.cpp" />
+    <ClCompile Include="C:\DBITech\CompTools5\Vc\Component\ctcheck.cpp" />
+    <ClCompile Include="Calibration.cpp" />
+    <ClCompile Include="ChartViewer.cpp" />
+    <ClCompile Include="Chip.cpp" />
+    <ClCompile Include="CmdLogPanel.cpp" />
+    <ClCompile Include="CmdManualPanel.cpp" />
+    <ClCompile Include="CmdOperationPanel.cpp" />
+    <ClCompile Include="CmdSetupPanel.cpp" />
+    <ClCompile Include="Comm.cpp" />
+    <ClCompile Include="Communicate.cpp" />
+    <ClCompile Include="CommunicateTable.cpp" />
+    <ClCompile Include="ConcreteIterator.cpp" />
+    <ClCompile Include="Control\1. Etc\ColorEdit.cpp" />
+    <ClCompile Include="Control\1. Etc\FileDoc.cpp" />
+    <ClCompile Include="Control\2. Static Control\Label.cpp" />
+    <ClCompile Include="Control\3. Button Control\SXButton.cpp" />
+    <ClCompile Include="Control\ctcombo.cpp" />
+    <ClCompile Include="Control\ctdigit.cpp" />
+    <ClCompile Include="Control\ctmeter.cpp" />
+    <ClCompile Include="Control\ctpush.cpp" />
+    <ClCompile Include="Control\ctSpin.cpp" />
+    <ClCompile Include="Control\cttextctrl.cpp" />
+    <ClCompile Include="Control\fpspread8.cpp" />
+    <ClCompile Include="Control\picture.cpp" />
+    <ClCompile Include="Control\TimeCounter.cpp" />
+    <ClCompile Include="Control\TrueColorToolBar.cpp" />
+    <ClCompile Include="Control\xDib.cpp" />
+    <ClCompile Include="Ctd.cpp" />
+    <ClCompile Include="ctlist.cpp" />
+    <ClCompile Include="ctlistctrl_log.cpp" />
+    <ClCompile Include="DataBuilder.cpp" />
+    <ClCompile Include="DataTransmitter.cpp" />
+    <ClCompile Include="DBVariantEx.cpp" />
+    <ClCompile Include="DebugConsole.cpp" />
+    <ClCompile Include="Device.cpp" />
+    <ClCompile Include="DeviceArea.cpp" />
+    <ClCompile Include="DFVCtrl.cpp" />
+    <ClCompile Include="DFVDocTemplate.cpp" />
+    <ClCompile Include="DFVDocument.cpp" />
+    <ClCompile Include="DFVFrameWnd.cpp" />
+    <ClCompile Include="DIALOGEX\UserDialogEx.cpp" />
+    <ClCompile Include="DIALOGEX\UserTabCtrl.cpp" />
+    <ClCompile Include="DlgBeamCheck.cpp" />
+    <ClCompile Include="DlgBin.cpp" />
+    <ClCompile Include="DlgBMWData.cpp" />
+    <ClCompile Include="DlgChangeAuthority.cpp" />
+    <ClCompile Include="DlgChangeLevel.cpp" />
+    <ClCompile Include="DlgChangePWD.cpp" />
+    <ClCompile Include="DlgComm.cpp" />
+    <ClCompile Include="DlgCustomerCode.cpp" />
+    <ClCompile Include="DlgDeleteRecipeSucc.cpp" />
+    <ClCompile Include="DlgDeviceIndexSet.cpp" />
+    <ClCompile Include="DlgDioTest.cpp" />
+    <ClCompile Include="DlgDualScannerParameter.cpp" />
+    <ClCompile Include="DlgEditPocket.cpp" />
+    <ClCompile Include="DlgERILightSetting.cpp" />
+    <ClCompile Include="DlgFiber.cpp" />
+    <ClCompile Include="DlgFiberSpi.cpp" />
+    <ClCompile Include="DlgFieldParameter.cpp" />
+    <ClCompile Include="DlgHardwareTest.cpp" />
+    <ClCompile Include="DlgIPGDualLaser.cpp" />
+    <ClCompile Include="DlgLampMessage.cpp" />
+    <ClCompile Include="DlgLogonRe.cpp" />
+    <ClCompile Include="DlgLotCompTime.cpp" />
+    <ClCompile Include="DlgMES.cpp" />
+    <ClCompile Include="DlgMsgDC.cpp" />
+    <ClCompile Include="DlgNetworkPath.cpp" />
+    <ClCompile Include="DlgOnlineCheck.cpp" />
+    <ClCompile Include="DlgOperatorMode.cpp" />
+    <ClCompile Include="DlgPassword.cpp" />
+    <ClCompile Include="DlgPatternEdit.cpp" />
+    <ClCompile Include="DlgPatternEdit_S.cpp" />
+    <ClCompile Include="DlgProgressBar.cpp" />
+    <ClCompile Include="DlgQMS.cpp" />
+    <ClCompile Include="DlgQMSFail.cpp" />
+    <ClCompile Include="DlgRecipeDeleteCheck.cpp" />
+    <ClCompile Include="DlgRecipeDeleteFail.cpp" />
+    <ClCompile Include="DlgRTC.cpp" />
+    <ClCompile Include="DlgShutterDelay.cpp" />
+    <ClCompile Include="DlgSpectron.cpp" />
+    <ClCompile Include="DlgSpecView.cpp" />
+    <ClCompile Include="DlgSPIDualLaser.cpp" />
+    <ClCompile Include="DlgTabData.cpp" />
+    <ClCompile Include="DlgTestCut.cpp" />
+    <ClCompile Include="DlgUserLogIn.cpp" />
+    <ClCompile Include="DlgWaitForMES.cpp" />
+    <ClCompile Include="DPoint.cpp" />
+    <ClCompile Include="DRect.cpp" />
+    <ClCompile Include="DSize.cpp" />
+    <ClCompile Include="Dsp.cpp" />
+    <ClCompile Include="DualScannerParameter.cpp" />
+    <ClCompile Include="DustCollector.cpp" />
+    <ClCompile Include="DustTrap.cpp" />
+    <ClCompile Include="FiberLaser.cpp" />
+    <ClCompile Include="FieldParameter.cpp" />
+    <ClCompile Include="FileDialog_ReadOnly.cpp" />
+    <ClCompile Include="FileListCtrl.cpp" />
+    <ClCompile Include="FileListCtrl2.cpp" />
+    <ClCompile Include="FilePath.cpp" />
+    <ClCompile Include="FileTreeCtrl.cpp" />
+    <ClCompile Include="FileTreeCtrl2.cpp" />
+    <ClCompile Include="FontCombo.cpp" />
+    <ClCompile Include="FontLoader.cpp" />
+    <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="GuiProgramInit.cpp" />
+    <ClCompile Include="GUI\GuiManager.cpp" />
+    <ClCompile Include="HanaLaser.cpp" />
+    <ClCompile Include="HanaLaser_DLG.cpp" />
+    <ClCompile Include="ImageTextButton.cpp" />
+    <ClCompile Include="Include\EXTERN\BtnST.cpp" />
+    <ClCompile Include="Include\EXTERN\ctcombo.cpp" />
+    <ClCompile Include="Include\EXTERN\ctdigit.cpp" />
+    <ClCompile Include="Include\EXTERN\ctlist.cpp" />
+    <ClCompile Include="Include\EXTERN\ctmeter.cpp" />
+    <ClCompile Include="Include\EXTERN\ctpush.cpp" />
+    <ClCompile Include="Include\EXTERN\ctSpin.cpp" />
+    <ClCompile Include="Include\EXTERN\cttextctrl.cpp" />
+    <ClCompile Include="Include\EXTERN\FileMgr.cpp" />
+    <ClCompile Include="Include\EXTERN\font.cpp" />
+    <ClCompile Include="Include\EXTERN\fpspread8.cpp" />
+    <ClCompile Include="Include\EXTERN\picture.cpp" />
+    <ClCompile Include="Include\EXTERN\TimeCounter.cpp" />
+    <ClCompile Include="Include\EXTERN\xDib.cpp" />
+    <ClCompile Include="Include\IMGConvert\IMGConvert.cpp" />
+    <ClCompile Include="ImportDXF.cpp" />
+    <ClCompile Include="InfoMESPanel.cpp" />
+    <ClCompile Include="InforMCStatusPanel.cpp" />
+    <ClCompile Include="InforParaPanel.cpp" />
+    <ClCompile Include="InforRecipeConfigPanel.cpp" />
+    <ClCompile Include="InforSetupPanel.cpp" />
+    <ClCompile Include="InforSetup_IOPanel.cpp" />
+    <ClCompile Include="Info_JamPanel.cpp" />
+    <ClCompile Include="Info_LogPanel.cpp" />
+    <ClCompile Include="IniConfig.cpp" />
+    <ClCompile Include="InitialTable.cpp" />
+    <ClCompile Include="IniUtil.cpp" />
+    <ClCompile Include="InsertFail.cpp" />
+    <ClCompile Include="IO.cpp" />
+    <ClCompile Include="IOCARD.cpp" />
+    <ClCompile Include="ItemList.cpp" />
+    <ClCompile Include="Iterator.cpp" />
+    <ClCompile Include="Lan.cpp" />
+    <ClCompile Include="Language.cpp" />
+    <ClCompile Include="LanSocket.cpp" />
+    <ClCompile Include="LaserControl.cpp" />
+    <ClCompile Include="LaserSimulator.cpp" />
+    <ClCompile Include="LoadString.cpp" />
+    <ClCompile Include="LocalDB.cpp" />
+    <ClCompile Include="LogReporter.cpp" />
+    <ClCompile Include="MainFormView.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="Marking.cpp" />
+    <ClCompile Include="Markup.cpp" />
+    <ClCompile Include="MathUtil.cpp" />
+    <ClCompile Include="MESFormView.cpp" />
+    <ClCompile Include="MKDialog.cpp" />
+    <ClCompile Include="MKDocTemplate.cpp" />
+    <ClCompile Include="MKFileReader.cpp" />
+    <ClCompile Include="MKFileWriter.cpp" />
+    <ClCompile Include="MKObject.cpp" />
+    <ClCompile Include="MKObjectApproacher.cpp" />
+    <ClCompile Include="MKObjectHandler.cpp" />
+    <ClCompile Include="MKStdFile.cpp" />
+    <ClCompile Include="NavigationPanel.cpp" />
+    <ClCompile Include="ObjectPainter.cpp" />
+    <ClCompile Include="ObjectSender.cpp" />
+    <ClCompile Include="ODBCDynamic.cpp" />
+    <ClCompile Include="OptionTable.cpp" />
+    <ClCompile Include="Parameter.cpp" />
+    <ClCompile Include="ParameterColor.cpp" />
+    <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="PictureVew.cpp" />
+    <ClCompile Include="PointerContainer.cpp" />
+    <ClCompile Include="PointerManager.cpp" />
+    <ClCompile Include="PointTranslator.cpp" />
+    <ClCompile Include="PowerControlView.cpp" />
+    <ClCompile Include="ProjectBaseView.cpp" />
+    <ClCompile Include="PYH_Comm.cpp" />
+    <ClCompile Include="q244v1.cpp" />
+    <ClCompile Include="qcontroller.cpp" />
+    <ClCompile Include="Quantronix.cpp" />
+    <ClCompile Include="QuntronixDlg.cpp" />
+    <ClCompile Include="RecipeChange.cpp" />
+    <ClCompile Include="RecipeChangeFail.cpp" />
+    <ClCompile Include="RecipeDownloadSucc.cpp" />
+    <ClCompile Include="RECIPE_MODULE\RecipeManager.cpp" />
+    <ClCompile Include="RGBBYTE.cpp" />
+    <ClCompile Include="Rofin.cpp" />
+    <ClCompile Include="RS232.cpp" />
+    <ClCompile Include="RsData400.cpp" />
+    <ClCompile Include="rsFontinfoDB.cpp" />
+    <ClCompile Include="rsHana.cpp" />
+    <ClCompile Include="RsLampLog.cpp" />
+    <ClCompile Include="RsParameter.cpp" />
+    <ClCompile Include="RsSampleDB.cpp" />
+    <ClCompile Include="RsSignetics.cpp" />
+    <ClCompile Include="RUN_MODULE\RunMgr.cpp" />
+    <ClCompile Include="ShareMemory.cpp" />
+    <ClCompile Include="SimulationObjectPainter.cpp" />
+    <ClCompile Include="Spectron.cpp" />
+    <ClCompile Include="Splash.cpp" />
+    <ClCompile Include="StatusDisplay.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="SubComboBox.cpp" />
+    <ClCompile Include="TabCtrlSSL.cpp" />
+    <ClCompile Include="TabImagePara.cpp" />
+    <ClCompile Include="TabLog.cpp" />
+    <ClCompile Include="TabPageSSL.cpp" />
+    <ClCompile Include="TabPower.cpp" />
+    <ClCompile Include="TabPowermeter.cpp" />
+    <ClCompile Include="TabSetting.cpp" />
+    <ClCompile Include="TabStandardPara.cpp" />
+    <ClCompile Include="TimeChecker.cpp" />
+    <ClCompile Include="TimeMessage.cpp" />
+    <ClCompile Include="TipWnd.cpp" />
+    <ClCompile Include="TitlePanel.cpp" />
+    <ClCompile Include="TransUnit.cpp" />
+    <ClCompile Include="UnitMIL.cpp" />
+    <ClCompile Include="UnitMM.cpp" />
+    <ClCompile Include="UnitPOINT.cpp" />
+    <ClCompile Include="UsefulSplitterWnd.cpp" />
+    <ClCompile Include="UserChangeOrderState.cpp" />
+    <ClCompile Include="UserCheck.cpp" />
+    <ClCompile Include="UserInterface.cpp" />
+    <ClCompile Include="UserState.cpp" />
+    <ClCompile Include="Util.cpp" />
+    <ClCompile Include="Utility.cpp" />
+    <ClCompile Include="VectorConverter.cpp" />
+    <ClCompile Include="WriteLog.cpp" />
+    <ClCompile Include="XMLFile.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="BeamEditor6.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DlgPouchEdit.h" />
+    <ClInclude Include="DlgPatternEdit_S.h" />
+    <ClInclude Include="InfoMESPanel.h" />
+    <ClInclude Include="IniUtil.h" />
+    <ClInclude Include="RECIPE_MODULE\RecipeDefine.h" />
+    <ClInclude Include="RECIPE_MODULE\RecipeManager.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="C:\DBITech\CompTools5\Vc\Component\ctcheck.h" />
+    <ClInclude Include="ChartViewer.h" />
+    <ClInclude Include="CmdLogPanel.h" />
+    <ClInclude Include="CmdOperationPanel.h" />
+    <ClInclude Include="Comm.h" />
+    <ClInclude Include="Control\1. Etc\FileDoc.h" />
+    <ClInclude Include="Control\3. Button Control\SXButton.h" />
+    <ClInclude Include="Control\CColorDefine.h" />
+    <ClInclude Include="Control\ctcombo.h" />
+    <ClInclude Include="Control\ctdigit.h" />
+    <ClInclude Include="Control\ctlist.h" />
+    <ClInclude Include="Control\ctmeter.h" />
+    <ClInclude Include="Control\ctpush.h" />
+    <ClInclude Include="Control\ctSpin.h" />
+    <ClInclude Include="Control\cttextctrl.h" />
+    <ClInclude Include="Control\fpspread8.h" />
+    <ClInclude Include="Control\picture.h" />
+    <ClInclude Include="Control\TimeCounter.h" />
+    <ClInclude Include="Control\TrueColorToolBar.h" />
+    <ClInclude Include="Control\xDib.h" />
+    <ClInclude Include="ctlistctrl_log.h" />
+    <ClInclude Include="DFVCtrl.h" />
+    <ClInclude Include="DFVDocTemplate.h" />
+    <ClInclude Include="DFVDocument.h" />
+    <ClInclude Include="DFVFrameWnd.h" />
+    <ClInclude Include="DIALOGEX\UserDialogEx.h" />
+    <ClInclude Include="DIALOGEX\UserTabCtrl.h" />
+    <ClInclude Include="DlgBeamCheck.h" />
+    <ClInclude Include="DlgBMWData.h" />
+    <ClInclude Include="DlgDeleteRecipeSucc.h" />
+    <ClInclude Include="DlgDualScannerParameter.h" />
+    <ClInclude Include="DlgEditPocket.h" />
+    <ClInclude Include="DlgERILightSetting.h" />
+    <ClInclude Include="DlgIPGDualLaser.h" />
+    <ClInclude Include="DlgLogonRe.h" />
+    <ClInclude Include="DlgMES.h" />
+    <ClInclude Include="DlgOnlineCheck.h" />
+    <ClInclude Include="DlgPatternEdit.h" />
+    <ClInclude Include="DlgQMS.h" />
+    <ClInclude Include="DlgQMSFail.h" />
+    <ClInclude Include="DlgRecipeDeleteCheck.h" />
+    <ClInclude Include="DlgRecipeDeleteFail.h" />
+    <ClInclude Include="DlgRTC.h" />
+    <ClInclude Include="DlgSPIDualLaser.h" />
+    <ClInclude Include="DlgTabData.h" />
+    <ClInclude Include="DlgTestCut.h" />
+    <ClInclude Include="DlgWaitForMES.h" />
+    <ClInclude Include="DualScannerParameter.h" />
+    <ClInclude Include="DustCollector.h" />
+    <ClInclude Include="DustTrap.h" />
+    <ClInclude Include="GDefine.h" />
+    <ClInclude Include="GuiProgramInit.h" />
+    <ClInclude Include="GUI\GuiDefine.h" />
+    <ClInclude Include="GUI\GuiManager.h" />
+    <ClInclude Include="ImageTextButton.h" />
+    <ClInclude Include="Include\EXTERN\BtnST.h" />
+    <ClInclude Include="Include\EXTERN\CColorDefine.h" />
+    <ClInclude Include="Include\EXTERN\ctcombo.h" />
+    <ClInclude Include="Include\EXTERN\ctdigit.h" />
+    <ClInclude Include="Include\EXTERN\ctlist.h" />
+    <ClInclude Include="Include\EXTERN\ctmeter.h" />
+    <ClInclude Include="Include\EXTERN\ctpush.h" />
+    <ClInclude Include="Include\EXTERN\ctSpin.h" />
+    <ClInclude Include="Include\EXTERN\cttextctrl.h" />
+    <ClInclude Include="Include\EXTERN\FileMgr.h" />
+    <ClInclude Include="Include\EXTERN\font.h" />
+    <ClInclude Include="Include\EXTERN\fpspread8.h" />
+    <ClInclude Include="Include\EXTERN\picture.h" />
+    <ClInclude Include="Include\EXTERN\TimeCounter.h" />
+    <ClInclude Include="Include\EXTERN\xDib.h" />
+    <ClInclude Include="Include\NX_RECIPE_PATH\RecipePathManager.h" />
+    <ClInclude Include="Include\Rtc4eth\RTC4ethexpl.h" />
+    <ClInclude Include="Include\Rtc4eth\RTC4ethimpl.h" />
+    <ClInclude Include="Include\Rtc4eth\stdint.h" />
+    <ClInclude Include="InforMCStatusPanel.h" />
+    <ClInclude Include="InforParaPanel.h" />
+    <ClInclude Include="InforRecipeConfigPanel.h" />
+    <ClInclude Include="InforSetupPanel.h" />
+    <ClInclude Include="InforSetup_IOPanel.h" />
+    <ClInclude Include="Info_JamPanel.h" />
+    <ClInclude Include="Info_LogPanel.h" />
+    <ClInclude Include="InsertFail.h" />
+    <ClInclude Include="LaserSimulator.h" />
+    <ClInclude Include="LogReporter.h" />
+    <ClInclude Include="C:\Program Files\EzSoftware AXT\AXTLibrary\Visual C++\Include\AIODef.h" />
+    <ClInclude Include="BarcodeDLL.h" />
+    <ClInclude Include="C:\Program Files\Microsoft Visual Studio\VC98\Include\BASETSD.H" />
+    <ClInclude Include="BCMenu.h" />
+    <ClInclude Include="BeamEditor6.h" />
+    <ClInclude Include="BeamEditor6Doc.h" />
+    <ClInclude Include="BeamEditor6View.h" />
+    <ClInclude Include="Bin.h" />
+    <ClInclude Include="BitmapImg.h" />
+    <ClInclude Include="BitmapPickerCombo.h" />
+    <ClInclude Include="BitmapPicture.h" />
+    <ClInclude Include="BlinkStatic.h" />
+    <ClInclude Include="BoolArrConvertor.h" />
+    <ClInclude Include="BtnST.h" />
+    <ClInclude Include="ButtonSSL.h" />
+    <ClInclude Include="Calibration.h" />
+    <ClInclude Include="C:\Program Files\EzSoftware AXT\AXTLibrary\Visual C++\Include\CAMC5MDef.h" />
+    <ClInclude Include="Chip.h" />
+    <ClInclude Include="CnfFile.h" />
+    <ClInclude Include="ColorEdit.h" />
+    <ClInclude Include="CommonControl\ColorNames.h" />
+    <ClInclude Include="ComiDaqComm.h" />
+    <ClInclude Include="Communicate.h" />
+    <ClInclude Include="CommunicateTable.h" />
+    <ClInclude Include="ConcreteIterator.h" />
+    <ClInclude Include="Control\ControlHeader.h" />
+    <ClInclude Include="Ctd.h" />
+    <ClInclude Include="Dask.h" />
+    <ClInclude Include="DataBuilder.h" />
+    <ClInclude Include="DataTransmitter.h" />
+    <ClInclude Include="DBVariantEx.h" />
+    <ClInclude Include="DebugConsole.h" />
+    <ClInclude Include="DEF.H" />
+    <ClInclude Include="define.h" />
+    <ClInclude Include="Defines.h" />
+    <ClInclude Include="Device.h" />
+    <ClInclude Include="DeviceArea.h" />
+    <ClInclude Include="C:\Program Files\EzSoftware AXT\AXTLibrary\Visual C++\Include\DIODef.h" />
+    <ClInclude Include="DlgBin.h" />
+    <ClInclude Include="DlgChangeAuthority.h" />
+    <ClInclude Include="DlgChangeLevel.h" />
+    <ClInclude Include="DlgChangePWD.h" />
+    <ClInclude Include="DlgComm.h" />
+    <ClInclude Include="DlgCustomerCode.h" />
+    <ClInclude Include="DlgDeviceIndexSet.h" />
+    <ClInclude Include="DlgDioTest.h" />
+    <ClInclude Include="DlgFiber.h" />
+    <ClInclude Include="DlgFiberSpi.h" />
+    <ClInclude Include="DlgFieldParameter.h" />
+    <ClInclude Include="DlgHardwareTest.h" />
+    <ClInclude Include="DlgLampMessage.h" />
+    <ClInclude Include="DlgLotCompTime.h" />
+    <ClInclude Include="DlgMsgDC.h" />
+    <ClInclude Include="DlgNetworkPath.h" />
+    <ClInclude Include="DlgOperatorMode.h" />
+    <ClInclude Include="DlgPassword.h" />
+    <ClInclude Include="DlgProgressBar.h" />
+    <ClInclude Include="DlgShutterDelay.h" />
+    <ClInclude Include="DlgSpectron.h" />
+    <ClInclude Include="DlgSpecView.h" />
+    <ClInclude Include="DlgUserLogIn.h" />
+    <ClInclude Include="DllCode.h" />
+    <ClInclude Include="Hatch\CCDK-3-30\INCLUDE\DMLDEFS.H" />
+    <ClInclude Include="DPoint.h" />
+    <ClInclude Include="DRect.h" />
+    <ClInclude Include="DSize.h" />
+    <ClInclude Include="Dsp.h" />
+    <ClInclude Include="FiberLaser.h" />
+    <ClInclude Include="FieldParameter.h" />
+    <ClInclude Include="FileDialog_ReadOnly.h" />
+    <ClInclude Include="FileListCtrl.h" />
+    <ClInclude Include="FileListCtrl2.h" />
+    <ClInclude Include="FilePath.h" />
+    <ClInclude Include="FileTreeCtrl.h" />
+    <ClInclude Include="FileTreeCtrl2.h" />
+    <ClInclude Include="FontCombo.h" />
+    <ClInclude Include="FontLoader.h" />
+    <ClInclude Include="FontManager.h" />
+    <ClInclude Include="HanaLaser.h" />
+    <ClInclude Include="HanaLaser_DLG.h" />
+    <ClInclude Include="Include\IMGConvert\IMGConvert.h" />
+    <ClInclude Include="ImportDXF.h" />
+    <ClInclude Include="ImportStruct.h" />
+    <ClInclude Include="IniConfig.h" />
+    <ClInclude Include="InitialTable.h" />
+    <ClInclude Include="C:\Program Files\Microsoft Visual Studio\VC98\Include\IO.H" />
+    <ClInclude Include="IO.h" />
+    <ClInclude Include="IOCARD.h" />
+    <ClInclude Include="ItemList.h" />
+    <ClInclude Include="Iterator.h" />
+    <ClInclude Include="JCONFIG.H" />
+    <ClInclude Include="Jmorecfg.h" />
+    <ClInclude Include="Control\2. Static Control\Label.h" />
+    <ClInclude Include="Lan.h" />
+    <ClInclude Include="Language.h" />
+    <ClInclude Include="LanSocket.h" />
+    <ClInclude Include="LASERCOM.H" />
+    <ClInclude Include="LaserControl.h" />
+    <ClInclude Include="LoadString.h" />
+    <ClInclude Include="LocalDB.h" />
+    <ClInclude Include="MainFormView.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="MarkImage.h" />
+    <ClInclude Include="Marking.h" />
+    <ClInclude Include="MarkOrder.h" />
+    <ClInclude Include="Markup.h" />
+    <ClInclude Include="MathUtil.h" />
+    <ClInclude Include="CommonControl\MemDC.h" />
+    <ClInclude Include="MCDefine.h" />
+    <ClInclude Include="MESFormView.h" />
+    <ClInclude Include="MKDialog.h" />
+    <ClInclude Include="MKDocTemplate.h" />
+    <ClInclude Include="MKFile.h" />
+    <ClInclude Include="MKFileReader.h" />
+    <ClInclude Include="MKFileWriter.h" />
+    <ClInclude Include="MKObject.h" />
+    <ClInclude Include="MKObjectApproacher.h" />
+    <ClInclude Include="MKObjectHandler.h" />
+    <ClInclude Include="MKStdFile.h" />
+    <ClInclude Include="NavigationPanel.h" />
+    <ClInclude Include="ObjBackup.h" />
+    <ClInclude Include="ObjectPainter.h" />
+    <ClInclude Include="ObjectSender.h" />
+    <ClInclude Include="ODBCDynamic.h" />
+    <ClInclude Include="ODBCDynamic.hpp" />
+    <ClInclude Include="OddButton.h" />
+    <ClInclude Include="OptionTable.h" />
+    <ClInclude Include="Parameter.h" />
+    <ClInclude Include="ParameterColor.h" />
+    <ClInclude Include="Parser.h" />
+    <ClInclude Include="PictureVew.h" />
+    <ClInclude Include="Pisodio.h" />
+    <ClInclude Include="PointerContainer.h" />
+    <ClInclude Include="PointerManager.h" />
+    <ClInclude Include="PointTranslator.h" />
+    <ClInclude Include="PowerControlView.h" />
+    <ClInclude Include="POWERCTR.H" />
+    <ClInclude Include="ProjectBaseView.h" />
+    <ClInclude Include="PYH_Comm.h" />
+    <ClInclude Include="q244v1.h" />
+    <ClInclude Include="qcontroller.h" />
+    <ClInclude Include="Quantronix.h" />
+    <ClInclude Include="QuntronixDlg.h" />
+    <ClInclude Include="RecipeChange.h" />
+    <ClInclude Include="RecipeChangeFail.h" />
+    <ClInclude Include="RecipeDownloadSucc.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="Return.h" />
+    <ClInclude Include="RGBBYTE.h" />
+    <ClInclude Include="CommonControl\Rgbcolor.h" />
+    <ClInclude Include="Rofin.h" />
+    <ClInclude Include="RS232.h" />
+    <ClInclude Include="RsData400.h" />
+    <ClInclude Include="RsEnterprise.h" />
+    <ClInclude Include="rsFontinfoDB.h" />
+    <ClInclude Include="rsHana.h" />
+    <ClInclude Include="RsIndustry.h" />
+    <ClInclude Include="RsLampLog.h" />
+    <ClInclude Include="RsParameter.h" />
+    <ClInclude Include="RsSampleDB.h" />
+    <ClInclude Include="RsSampleDBParts.h" />
+    <ClInclude Include="RsSignetics.h" />
+    <ClInclude Include="RUN_MODULE\RunMgr.h" />
+    <ClInclude Include="ShareMemory.h" />
+    <ClInclude Include="SimulationObjectPainter.h" />
+    <ClInclude Include="Spectron.h" />
+    <ClInclude Include="Splash.h" />
+    <ClInclude Include="StatusDisplay.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="SubComboBox.h" />
+    <ClInclude Include="TabCtrlSSL.h" />
+    <ClInclude Include="TabImagePara.h" />
+    <ClInclude Include="TabLog.h" />
+    <ClInclude Include="TabPageSSL.h" />
+    <ClInclude Include="TabPower.h" />
+    <ClInclude Include="TabPowermeter.h" />
+    <ClInclude Include="TabSetting.h" />
+    <ClInclude Include="TabStandardPara.h" />
+    <ClInclude Include="Tal_enums.h" />
+    <ClInclude Include="tbarcode.h" />
+    <ClInclude Include="TECBCEnum.h" />
+    <ClInclude Include="TGraphics.h" />
+    <ClInclude Include="TIFF.H" />
+    <ClInclude Include="TimeChecker.h" />
+    <ClInclude Include="TimeMessage.h" />
+    <ClInclude Include="TipToolBar.h" />
+    <ClInclude Include="TipWnd.h" />
+    <ClInclude Include="TitlePanel.h" />
+    <ClInclude Include="TransUnit.h" />
+    <ClInclude Include="UnitMIL.h" />
+    <ClInclude Include="UnitMM.h" />
+    <ClInclude Include="UnitPOINT.h" />
+    <ClInclude Include="UsefulSplitterWnd.h" />
+    <ClInclude Include="User.h" />
+    <ClInclude Include="UserChangeOrderState.h" />
+    <ClInclude Include="UserCheck.h" />
+    <ClInclude Include="UserInterface.h" />
+    <ClInclude Include="UserState.h" />
+    <ClInclude Include="Util.h" />
+    <ClInclude Include="Utility.h" />
+    <ClInclude Include="Vector.h" />
+    <ClInclude Include="VectorConverter.h" />
+    <ClInclude Include="version.h" />
+    <ClInclude Include="WriteLog.h" />
+    <ClInclude Include="XMLFile.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="resource.hm" />
+    <CustomBuild Include="res\BeamEditor6.rc2" />
+    <CustomBuild Include="res\cur00001.cur" />
+    <CustomBuild Include="RES\cursor1.cur" />
+    <CustomBuild Include="res\cursor_h.cur" />
+    <CustomBuild Include="res\cursor_z.cur" />
+    <CustomBuild Include="RES\default1.bin" />
+    <CustomBuild Include="HANKANG.DLL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\BeamEditor\RES\DEVICE.bmp" />
+    <Image Include="..\BeamEditor\RES\Icon\DEVICE.ico" />
+    <Image Include="..\LaserNotchingSys\RES\Icon\Notching\icons8-play-64 - 복사본.png" />
+    <Image Include="..\LaserNotchingSys_WORK\RES\Icon\Notching\icons8-play-64 - 복사본.png" />
+    <Image Include="..\Project\BeamEditor\RES\DEVICE.bmp" />
+    <Image Include="..\Project\BeamEditor\RES\Icon\DEVICE.ico" />
+    <Image Include="AutoBtn.bmp" />
+    <Image Include="Control\2. Static Control\led_.bmp" />
+    <Image Include="F:\Project\ProjectBase_Cutting\ProjectBase\ProjectBase\res\Cmd_BG.bmp" />
+    <Image Include="F:\Project\ProjectBase_Cutting\ProjectBase\ProjectBase\res\Main_BG.bmp" />
+    <Image Include="F:\Project\ProjectBase_Cutting\ProjectBase\ProjectBase\res\Navi_BG.bmp" />
+    <Image Include="F:\Project\ProjectBase_Cutting\ProjectBase\ProjectBase\res\NexviewMark.ico" />
+    <Image Include="F:\Project\ProjectBase_Cutting\ProjectBase\ProjectBase\res\Title_BG.bmp" />
+    <Image Include="F:\Project\ProjectBase_Cutting\ProjectBase\ProjectBase\res\Toolbar.bmp" />
+    <Image Include="F:\Project\ProjectBase_Cutting\ProjectBase\ProjectBase\res\Toolbar256.bmp" />
+    <Image Include="F:\Project\ProjectBase_Cutting\ProjectBase\ProjectBase\res\Upload.bmp" />
+    <Image Include="F:\Project\ProjectBase_Cutting\ProjectBase\ProjectBase\res\Upload2.bmp" />
+    <Image Include="res\32x32x256_Cancel.ico" />
+    <Image Include="res\32x32x256_Lamp.ico" />
+    <Image Include="res\32x32x256_Ok.ico" />
+    <Image Include="RES\B-PatternImage.bmp" />
+    <Image Include="res\B-PatternImage2.bmp" />
+    <Image Include="res\BeamEditor6.ico" />
+    <Image Include="res\BeamEditor6Doc.ico" />
+    <Image Include="res\BeamICO.ico" />
+    <Image Include="RES\bg.bmp" />
+    <Image Include="res\bitmap1.bmp" />
+    <Image Include="res\bitmap10.bmp" />
+    <Image Include="res\bitmap11.bmp" />
+    <Image Include="res\bitmap12.bmp" />
+    <Image Include="res\bitmap13.bmp" />
+    <Image Include="res\bitmap14.bmp" />
+    <Image Include="res\bitmap15.bmp" />
+    <Image Include="res\bitmap16.bmp" />
+    <Image Include="res\bitmap2.bmp" />
+    <Image Include="res\bitmap3.bmp" />
+    <Image Include="res\bitmap5.bmp" />
+    <Image Include="res\bitmap6.bmp" />
+    <Image Include="res\bitmap8.bmp" />
+    <Image Include="res\bitmap9.bmp" />
+    <Image Include="res\bitmap_b.bmp" />
+    <Image Include="res\bitmap_m.bmp" />
+    <Image Include="res\bmp00001.bmp" />
+    <Image Include="res\bmp00002.bmp" />
+    <Image Include="res\bmp00003.bmp" />
+    <Image Include="res\bmp00004.bmp" />
+    <Image Include="res\bmp00005.bmp" />
+    <Image Include="res\bmp00006.bmp" />
+    <Image Include="res\bmp00007.bmp" />
+    <Image Include="res\bmp00008.bmp" />
+    <Image Include="res\bmp00009.bmp" />
+    <Image Include="res\bmp00010.bmp" />
+    <Image Include="res\bmp00011.bmp" />
+    <Image Include="res\bmp00012.bmp" />
+    <Image Include="res\bmp00013.bmp" />
+    <Image Include="res\bmp00014.bmp" />
+    <Image Include="res\bmp00015.bmp" />
+    <Image Include="res\bmp00016.bmp" />
+    <Image Include="res\bmp00017.bmp" />
+    <Image Include="res\bmp00018.bmp" />
+    <Image Include="res\bmp00019.bmp" />
+    <Image Include="res\bmp00020.bmp" />
+    <Image Include="res\bmp00021.bmp" />
+    <Image Include="res\bmp00022.bmp" />
+    <Image Include="res\bmp00023.bmp" />
+    <Image Include="res\bmp00024.bmp" />
+    <Image Include="res\bmp00025.bmp" />
+    <Image Include="res\bmp00026.bmp" />
+    <Image Include="res\bmp00027.bmp" />
+    <Image Include="RES\bmp00028.bmp" />
+    <Image Include="RES\bmp00029.bmp" />
+    <Image Include="RES\bmp00030.bmp" />
+    <Image Include="res\bmp00031.bmp" />
+    <Image Include="res\bmp00036.bmp" />
+    <Image Include="res\bmp00042.bmp" />
+    <Image Include="res\bmp00043.bmp" />
+    <Image Include="res\bmp00044.bmp" />
+    <Image Include="res\bmp00045.bmp" />
+    <Image Include="res\bmp00047.bmp" />
+    <Image Include="res\bmp00048.bmp" />
+    <Image Include="res\bmp00049.bmp" />
+    <Image Include="res\bmp00050.bmp" />
+    <Image Include="res\bmp00051.bmp" />
+    <Image Include="res\bmp00052.bmp" />
+    <Image Include="res\bmp00056.bmp" />
+    <Image Include="res\bmp00057.bmp" />
+    <Image Include="res\bmp00058.bmp" />
+    <Image Include="res\bmp00059.bmp" />
+    <Image Include="res\bmp00061.bmp" />
+    <Image Include="res\bmp00063.bmp" />
+    <Image Include="res\bmp00064.bmp" />
+    <Image Include="res\bmp00065.bmp" />
+    <Image Include="res\bmp04.bmp" />
+    <Image Include="res\Cmd_BG.bmp" />
+    <Image Include="res\copy.bmp" />
+    <Image Include="res\cut.bmp" />
+    <Image Include="res\DEVICE.bmp" />
+    <Image Include="res\DPSSL_Back.bmp" />
+    <Image Include="RES\dxf.ico" />
+    <Image Include="RES\edt_bg.bmp" />
+    <Image Include="res\EMG Button110.bmp" />
+    <Image Include="res\EXT.bmp" />
+    <Image Include="RES\hatch.bmp" />
+    <Image Include="RES\hatch2.bmp" />
+    <Image Include="res\ico00001.ico" />
+    <Image Include="res\ico00002.ico" />
+    <Image Include="res\ico00003.ico" />
+    <Image Include="res\ico00004.ico" />
+    <Image Include="RES\ico00005.ico" />
+    <Image Include="RES\ico00006.ico" />
+    <Image Include="res\ico00007.ico" />
+    <Image Include="res\ico00008.ico" />
+    <Image Include="res\icon1.ico" />
+    <Image Include="res\icon2.ico" />
+    <Image Include="res\icon3.ico" />
+    <Image Include="RES\Icon\DEVICE.ico" />
+    <Image Include="RES\Icon\Exit.ico" />
+    <Image Include="RES\Icon\manual_cut.ico" />
+    <Image Include="RES\Icon\PARA.ico" />
+    <Image Include="RES\Icon\Run.ico" />
+    <Image Include="RES\Icon\running_man.png" />
+    <Image Include="RES\Icon\running_man26.png" />
+    <Image Include="RES\Icon\Stop.ico" />
+    <Image Include="res\icon_bol.ico" />
+    <Image Include="res\icon_cop.ico" />
+    <Image Include="res\icon_copy.ico" />
+    <Image Include="RES\icon_gre.ico" />
+    <Image Include="RES\icon_green_off.ico" />
+    <Image Include="RES\icon_red.ico" />
+    <Image Include="RES\icon_red_off.ico" />
+    <Image Include="res\icon_ric.ico" />
+    <Image Include="res\icon_sta.ico" />
+    <Image Include="res\iconoff.ico" />
+    <Image Include="res\iconoff1.ico" />
+    <Image Include="res\iconon.ico" />
+    <Image Include="res\iconon1.ico" />
+    <Image Include="res\iconoon.ico" />
+    <Image Include="res\IDB_IMG.bmp" />
+    <Image Include="res\idc_stat.bmp" />
+    <Image Include="res\idr_main.ico" />
+    <Image Include="res\INT.bmp" />
+    <Image Include="res\KOEM.bmp" />
+    <Image Include="res\LaserOff.bmp" />
+    <Image Include="res\LaserOn.bmp" />
+    <Image Include="RES\led_gray.bmp" />
+    <Image Include="RES\led_gree.bmp" />
+    <Image Include="RES\led_red.bmp" />
+    <Image Include="RES\led_yell.bmp" />
+    <Image Include="res\LINE2.bmp" />
+    <Image Include="res\mainfram.bmp" />
+    <Image Include="res\MainFrame_Menu.bmp" />
+    <Image Include="res\Main_BG.bmp" />
+    <Image Include="RES\Main_BG2.bmp" />
+    <Image Include="res\MARKING1.bmp" />
+    <Image Include="res\MARKING2.bmp" />
+    <Image Include="res\MARKING3.bmp" />
+    <Image Include="res\MARKING4.bmp" />
+    <Image Include="res\MENU24BIT_ICON.bmp" />
+    <Image Include="res\MENU24BIT_MENU.bmp" />
+    <Image Include="res\MENU_ICON.bmp" />
+    <Image Include="res\Navi_BG.bmp" />
+    <Image Include="RES\nextmark.ico" />
+    <Image Include="RES\NextMarking.bmp" />
+    <Image Include="RES\NextMarking1.bmp" />
+    <Image Include="res\NONE.ico" />
+    <Image Include="res\object_r.bmp" />
+    <Image Include="res\PARAMETER.bmp" />
+    <Image Include="res\paste.bmp" />
+    <Image Include="res\printer.bmp" />
+    <Image Include="res\QSWOff.bmp" />
+    <Image Include="res\QSWOn.bmp" />
+    <Image Include="res\Rico.ico" />
+    <Image Include="res\Shutter.ico" />
+    <Image Include="res\shutter_.ico" />
+    <Image Include="res\ShutterOff.bmp" />
+    <Image Include="res\ShutterOn.bmp" />
+    <Image Include="RES\Simul.ico" />
+    <Image Include="RES\Simul_32.ico" />
+    <Image Include="res\Title_BG.bmp" />
+    <Image Include="res\toolbar1.bmp" />
+    <Image Include="res\toolbar_draw.bmp" />
+    <Image Include="res\toolbar_drawhit.bmp" />
+    <Image Include="res\toolbar_draw_disable.bmp" />
+    <Image Include="res\TOOTECH.bmp" />
+    <Image Include="res\Upload.bmp" />
+    <Image Include="res\Upload2.bmp" />
+    <Image Include="res\warn1.ico" />
+    <Image Include="Splsh16.bmp" />
+    <Image Include="res\TOOL16_ALIGN.bmp" />
+    <Image Include="res\TOOL16_EDIT.bmp" />
+    <Image Include="res\TOOL16_HELP.bmp" />
+    <Image Include="res\TOOL16_MARKORDER.bmp" />
+    <Image Include="res\TOOL16_STANDARD.bmp" />
+    <Image Include="res\TOOL24BIT_ALIGN.bmp" />
+    <Image Include="res\TOOL24BIT_CO2STANDARD.bmp" />
+    <Image Include="res\TOOL24BIT_EDIT.bmp" />
+    <Image Include="res\TOOL24BIT_FIGURE.bmp" />
+    <Image Include="res\TOOL24BIT_HELP.bmp" />
+    <Image Include="res\TOOL24BIT_MARKORDER.bmp" />
+    <Image Include="res\TOOL24BIT_STANDARD.bmp" />
+    <Image Include="res\Toolbar.bmp" />
+    <Image Include="res\undo.bmp" />
+    <Image Include="res\undo1.bmp" />
+    <Image Include="res\WARN.ico" />
+    <Image Include="RES\NextMarking1.PNG" />
+    <Image Include="TOOTECH.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="HANKANG.LIB" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NX_KEYPAD\NX_KEYPAD.sln" />
+    <None Include="NX_THREAD\NX_THREAD.vcxproj" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="BeamEditor6.rc" _x007B_97CCB606-0956-11D4-9466-E4E10EC10000_x007D_="CCtlistctrl_log" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,28 @@
+// ObjBackup.cpp: implementation of the CObjBackup class.
+//
+//////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "mk.h"
+#include "ObjBackup.h"
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[]=__FILE__;
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+CObjBackup::CObjBackup()
+{
+	next = NULL;
+
+}
+
+CObjBackup::~CObjBackup()
+{
+
+}

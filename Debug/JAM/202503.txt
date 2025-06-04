@@ -1,0 +1,46 @@
+25,20250304-18:38:40,Laser Control Communication Disconnected!
+25,20250304-18:38:43,Laser Control Communication Disconnected!
+25,20250304-18:38:46,Laser Control Communication Disconnected!
+25,20250304-18:38:46,Laser Control Communication Disconnected!
+25,20250304-18:38:47,Laser Control Communication Disconnected!
+25,20250304-18:38:50,Laser Control Communication Disconnected!
+25,20250304-18:38:53,Laser Control Communication Disconnected!
+25,20250304-18:38:53,Laser Control Communication Disconnected!
+25,20250304-18:38:54,Laser Control Communication Disconnected!
+25,20250304-18:38:57,Laser Control Communication Disconnected!
+25,20250304-18:39:00,Laser Control Communication Disconnected!
+25,20250304-18:39:00,Laser Control Communication Disconnected!
+25,20250304-18:39:01,Laser Control Communication Disconnected!
+25,20250304-18:39:04,Laser Control Communication Disconnected!
+25,20250304-18:39:07,Laser Control Communication Disconnected!
+25,20250304-18:39:07,Laser Control Communication Disconnected!
+25,20250304-18:39:08,Laser Control Communication Disconnected!
+25,20250304-18:39:11,Laser Control Communication Disconnected!
+25,20250304-18:39:12,Laser Control Communication Disconnected!
+25,20250304-18:39:15,Laser Control Communication Disconnected!
+25,20250304-18:39:15,Laser Control Communication Disconnected!
+25,20250304-18:39:16,Laser Control Communication Disconnected!
+25,20250304-18:39:19,Laser Control Communication Disconnected!
+25,20250304-18:39:22,Laser Control Communication Disconnected!
+25,20250304-18:39:22,Laser Control Communication Disconnected!
+25,20250304-18:39:23,Laser Control Communication Disconnected!
+25,20250304-18:39:26,Laser Control Communication Disconnected!
+25,20250304-18:39:27,Laser Control Communication Disconnected!
+25,20250304-18:39:30,Laser Control Communication Disconnected!
+25,20250304-18:39:30,Laser Control Communication Disconnected!
+25,20250304-18:39:31,Laser Control Communication Disconnected!
+25,20250304-18:39:34,Laser Control Communication Disconnected!
+25,20250304-18:39:35,Laser Control Communication Disconnected!
+25,20250304-18:39:38,Laser Control Communication Disconnected!
+25,20250304-18:39:38,Laser Control Communication Disconnected!
+25,20250304-18:39:39,Laser Control Communication Disconnected!
+25,20250304-18:39:42,Laser Control Communication Disconnected!
+13,20250310-18:55:23,INIT Fail
+13,20250310-19:36:28,INIT Fail
+13,20250310-19:38:29,INIT Fail
+140,20250320-09:53:36,
+140,20250320-09:53:40,
+140,20250321-09:57:09,
+140,20250321-12:47:30,
+140,20250324-10:43:47,
+140,20250324-10:44:19,

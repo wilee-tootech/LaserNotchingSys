@@ -1,0 +1,101 @@
+//////////////////////////////////////////////////////////////////////////
+//	Defines....
+
+#ifndef DEFINE_CONTROL_COMMAND
+#define DEFINE_CONTROL_COMMAND
+
+
+#define ASCII_BEL		0x07
+#define ASCII_BS		0x08
+#define ASCII_LF		0x0A
+#define ASCII_CR		0x0D
+#define ASCII_XON		0x11
+#define ASCII_XOFF		0x13
+
+#define ASCII_STX   	0x02
+#define ASCII_ACK		0x06
+#define ASCII_NAK		0x15
+#define ASCII_CHAR_A	0x41
+#define ASCII_CHAR_E	0x45
+
+#define ASCII_SOH		0x01
+#define ASCII_ENQ		0x05
+#define ASCII_ETX		0x03
+#define ASCII_SP		0x20
+
+
+#define SET_MAX_CURRENT		0x01
+#define SET_ACT_CURRENT		0x02
+#define SET_MAX_FREQUENCY	0x03
+#define SET_ACT_FREQUENCY	0x04
+#define SET_ELAPSED_HOUR	0x05
+#define SET_ELAPSED_MINUTE	0x06
+
+#define GET_MAX_CURRENT		0x10
+#define GET_ACT_CURRENT		0x11
+#define GET_LASER_POWER		0x12
+#define GET_ARRAY_TEMP		0x13
+#define GET_MAX_FREQUENCY	0x14
+#define GET_ACT_FREQUENCY	0x15
+#define GET_FET_VOLTAGE		0x16
+#define GET_FET_TEMP		0x17
+#define GET_ELAPSED_HOUR	0x18
+#define GET_ELAPSED_MINUTE	0x19
+
+#define GET_INTERLOCK_DATA	0x20
+#define GET_FAULT_OVERRIDE	0x21
+#define GET_FREQUENCY		0x22
+#define GET_SWITCH			0x23
+
+#define ON_OFF_COMMAND		0x30
+#define SET_PERIODIC_MONITOR_ON_OFF	0x40
+#define COMMUNICATION_ERROR_CHECK	0x50
+
+#define SET_OK				0x06
+
+#define COMMAND_LASER_ON		0x01
+#define COMMAND_LASER_OFF		0x02
+#define COMMAND_SHUTTER_ON		0x03
+#define COMMAND_SHUTTER_OFF		0x04
+#define COMMAND_QSW_ON			0x05
+#define COMMAND_QSW_OFF			0x06
+#define COMMAND_INTERNAL_FREQ	0x07
+#define COMMAND_EXTERNAL_FREQ	0x08
+#define COMMAND_EMG_ON			0x09
+#define COMMAND_EMG_OFF			0x0a
+#define COMMAND_REMOTE_ON		0x0b
+#define COMMAND_REMOTE_OFF		0x0c
+#define COMMAND_SAVE_ELAPSED	0x0d
+
+#define COMMAND_PERIODIC_ON		0x01
+#define COMMAND_PERIODIC_OFF	0x02
+
+#define MONITOR_LASER_POWER		0x40
+#define MONITOR_ARRAY_TEMP		0x41
+#define MONITOR_FET_VOLTAGE		0x42
+#define MONITOR_FET_TEMP		0x43
+#define MONITOR_FAULT			0x44
+#define MONITOR_SWITCH			0x45
+#define MONITOR_MAX_CURRENT		0x46
+#define MONITOR_ACT_CURRENT		0x47
+#define MONITOR_MAX_FREQUENCY	0x48
+#define MONITOR_ACT_FREQUENCY	0x49
+#define MONITOR_ELAPSED_HOUR	0x4a
+#define MONITOR_ELAPSED_MINUTE	0x4b
+#define MONITOR_FAULT_OVERRIDE	0x4c
+#define MONITOR_FPS_SET			0x4d
+#define MONITOR_FREQUENCY_LOW_LIMIT	0x4e
+
+#define DEFAULT_VALUE	0xffff
+
+#define CHECK_COM_CODE	0x50
+#define CHECK_COM_TEXT	0x5555
+
+#define MAX_OUT_CNT_USE   4
+#define M_PI              3.141592
+
+#define TM_SENSOR_ID    3
+#define Contact_Point		16
+#define INPUT_MODE 0
+#define OUTPUT_MODE 0
+#endif

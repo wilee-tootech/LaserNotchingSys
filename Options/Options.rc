@@ -1,0 +1,508 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어(대한민국) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Options.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.kor\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\Options.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Options 정보"
+FONT 9, "굴림"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "Options 버전 1.1",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2004",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "확인",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_OPTIONS_DIALOG DIALOGEX 0, 0, 235, 388
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Customer"
+FONT 9, "Tahoma", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Ok",IDOK,122,367,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,177,367,50,14
+    PUSHBUTTON      "Laser Control",IDC_LASER_SELECT,17,13,54,14
+    CONTROL         "Load the default mark file",IDC_CHK_DEFAULTFILE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,31,92,14
+    CONTROL         "Load Tootech image",IDC_CHK_HKIMAGE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,49,86,14
+    CONTROL         "Handler network",IDC_CHK_NETWORK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,67,67,14
+    CONTROL         "Use loading image",IDC_CHK_LOADIMAGE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,85,70,14
+    CONTROL         "Use two part",IDC_TWO_PART,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,103,59,12
+    CONTROL         "Use chip select",IDC_CHIP_SELECT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,119,59,12
+    CONTROL         "Use shutter",IDC_SHUTTER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,135,59,12
+    CONTROL         "Use Counter",IDC_COUNT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,149,59,12
+    EDITTEXT        IDC_FIELD_SCALE,170,32,49,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FIELD_ANGLE,170,47,49,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MAX_FIELD,164,75,41,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MAX_MM,164,89,41,12,ES_AUTOHSCROLL
+    CONTROL         "mm",IDC_MM,"Button",BS_AUTORADIOBUTTON | WS_GROUP,133,129,29,12
+    CONTROL         "point",IDC_POINT,"Button",BS_AUTORADIOBUTTON,177,129,29,12
+    CONTROL         "field",IDC_FIELD,"Button",BS_AUTORADIOBUTTON,133,145,29,12
+    CONTROL         "mil",IDC_MIL,"Button",BS_AUTORADIOBUTTON,177,145,29,12
+    EDITTEXT        IDC_SLAVE_X,52,224,41,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_SLAVE_Y,52,237,41,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MASTER_X,159,223,41,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MASTER_Y,159,236,41,12,ES_AUTOHSCROLL
+    LTEXT           "Field Scale",IDC_SCALE,119,33,43,10
+    GROUPBOX        "Default Unit",IDC_STATIC,120,117,101,48
+    GROUPBOX        "Default Field Setting",IDC_STATIC,120,63,101,48
+    LTEXT           "Field",IDC_STATIC,136,75,16,12
+    LTEXT           "mm",IDC_STATIC,136,89,15,12
+    LTEXT           "Field angle",IDC_STATIC,119,49,39,12
+    GROUPBOX        "",IDC_STATIC,6,2,221,361
+    GROUPBOX        "Right Offset",IDC_STATIC,120,210,101,48
+    LTEXT           "X",IDC_STATIC,136,225,16,12
+    LTEXT           "Y",IDC_STATIC,136,238,15,12
+    GROUPBOX        "Left Offset",IDC_STATIC,13,210,101,48
+    LTEXT           "X",IDC_STATIC,29,225,16,12
+    LTEXT           "Y",IDC_STATIC,29,238,15,12
+    LTEXT           "Static",IDC_STATIC_LASER,82,13,136,14,SS_CENTERIMAGE
+    PUSHBUTTON      "View",IDC_VIEW_OPTION,13,173,48,15
+    PUSHBUTTON      "Log",IDC_LOG_OPTION,66,173,48,15
+    PUSHBUTTON      "Color",IDC_SEL_PARA_COLOR,80,191,34,15
+    CONTROL         "Parameter Color",IDC_PARA_COLOR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,193,64,9
+    CONTROL         "Use object same ratio",IDC_SAME_RATIO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,122,193,90,9
+    GROUPBOX        "Head Option",IDC_STATIC,13,258,208,33
+    CONTROL         "EO MARK",IDC_CHECK_AMKOR,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_GROUP | WS_TABSTOP,18,347,45,10
+    LTEXT           "Company Code",IDC_STATIC,71,348,48,8,NOT WS_VISIBLE
+    EDITTEXT        IDC_EDIT_COMPANYCODE,123,344,80,14,ES_AUTOHSCROLL | NOT WS_VISIBLE
+    LTEXT           "Head1 Name",IDC_STATIC,17,274,53,8
+    EDITTEXT        IDC_EDIT_HEAD1_NAME,75,270,80,14,ES_AUTOHSCROLL
+    CONTROL         "Spec Image View",IDC_CHECK_IMAGE,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,18,333,71,10
+    EDITTEXT        IDC_EDIT_SPECIMAGE_FOLDER,103,329,99,14,ES_AUTOHSCROLL | NOT WS_VISIBLE
+    PUSHBUTTON      "...",IDC_BUTTON_DIR,203,330,16,12,NOT WS_VISIBLE
+    GROUPBOX        "List mode",IDC_STATIC,12,296,208,30,NOT WS_VISIBLE
+    CONTROL         "Circular Queue",IDC_MODE_CIR,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE | WS_GROUP,22,308,58,10
+    CONTROL         "Continuous",IDC_MODE_CONTINE,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,130,308,58,10
+END
+
+IDD_VIEW_DIALOG DIALOGEX 0, 0, 219, 201
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "View"
+FONT 9, "Tahoma", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,102,180,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,162,180,50,14
+    PUSHBUTTON      "Device Inner Color",IDC_COL_DEVINNER,7,7,69,16
+    CONTROL         "",IDC_PIC_DEVINNER,"Static",SS_WHITERECT,81,7,24,16,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Device Outer Color",IDC_COL_DEVOUTER,7,30,69,16
+    CONTROL         "",IDC_PIC_DEVOUTER,"Static",SS_WHITERECT,81,30,24,16,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Device Line Color",IDC_COL_DEVLINE,7,53,69,16
+    CONTROL         "",IDC_PIC_DEVLINE,"Static",SS_WHITERECT,81,53,24,16,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Grid Line Color",IDC_COL_GRIDLINE,7,77,69,16
+    CONTROL         "",IDC_PIC_GRIDLINE,"Static",SS_WHITERECT,81,77,24,16,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Grid Scale Color",IDC_COL_GRIDSCALE,7,100,69,16
+    CONTROL         "",IDC_PIC_GRIDSCALE,"Static",SS_WHITERECT,81,100,24,16,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Ruler Color",IDC_COL_RULER,7,123,69,16
+    CONTROL         "",IDC_PIC_RULER,"Static",SS_WHITERECT,81,123,24,16,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Select Box Color",IDC_COL_SELBOX,7,146,69,16
+    CONTROL         "",IDC_PIC_SELBOX,"Static",SS_WHITERECT,81,146,24,16,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_SIZE_SELBOX,175,145,36,16,ES_AUTOHSCROLL
+    RTEXT           "Select Box Size :",IDC_STATIC,116,147,55,11,SS_CENTERIMAGE
+    EDITTEXT        IDC_SIZE_RULERFONT,175,121,36,16,ES_AUTOHSCROLL
+    RTEXT           "Ruler Font Size :",IDC_STATIC,116,123,55,11,SS_CENTERIMAGE
+    EDITTEXT        IDC_SIZE_RULER,175,75,36,16,ES_AUTOHSCROLL
+    RTEXT           "Ruler Size :",IDC_STATIC,116,77,55,11,SS_CENTERIMAGE
+    EDITTEXT        IDC_SIZE_RULERSCALE,175,98,36,16,ES_AUTOHSCROLL
+    RTEXT           "Ruler Scale Size :",IDC_STATIC,116,100,55,11,SS_CENTERIMAGE
+END
+
+IDD_LOG_DIALOG DIALOG 0, 0, 185, 257
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Log Setting"
+FONT 9, "Tahoma"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,74,236,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,128,236,50,14
+    CONTROL         "Auto Mark Start",IDC_AUTO_START,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,17,32,82,10
+    GROUPBOX        "",IDC_STATIC,7,3,171,165
+    CONTROL         "Auto Mark End",IDC_AUTO_END,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,17,48,82,10
+    CONTROL         "Auto Mark End Event",IDC_AUTO_END_EVENT,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,17,64,82,10
+    CONTROL         "Manual Mark Start",IDC_MANUAL_START,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,17,80,82,10
+    CONTROL         "Manual Mark End",IDC_MANUAL_END,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,17,96,82,10
+    CONTROL         "Wait Mode Start",IDC_WAIT_START,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,17,112,82,10
+    CONTROL         "Wait Mode End",IDC_WAIT_END,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,17,127,82,10
+    CONTROL         "Laser Error",IDC_LASER_ERROR,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,17,143,82,10
+    LTEXT           "CODE",IDC_STATIC,137,15,21,9
+    EDITTEXT        IDC_CODE_AUTOSTART,129,30,34,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_CODE_AUTOEND,129,46,34,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_CODE_AUTOENDEVENT,129,62,34,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_CODE_MANUALSTART,129,78,34,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_CODE_MANUALEND,129,94,34,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_CODE_WAITSTART,129,110,34,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_CODE_WAITEND,129,125,34,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_CODE_LASERERROR,129,141,34,12,ES_AUTOHSCROLL
+    LTEXT           "Saving Directory",IDC_STATIC,17,176,51,10
+    LTEXT           "Saving Period",IDC_STATIC,17,211,44,10
+    LTEXT           "min.",IDC_STATIC,115,211,14,10
+    EDITTEXT        IDC_SAVE_DIR,17,189,152,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_SAVE_PERIOD,70,210,34,12,ES_AUTOHSCROLL
+    LTEXT           "USE",IDC_STATIC,90,15,16,9
+    PUSHBUTTON      "...",IDC_SEL_DIR,73,174,12,12
+END
+
+IDD_DIR_DIALOG DIALOG 0, 0, 147, 165
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Directory"
+FONT 9, "Tahoma"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,34,143,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,90,143,50,14
+    CONTROL         "Tree1",IDC_DIRECTORY,"SysTreeView32",WS_BORDER | WS_TABSTOP,7,7,133,127
+END
+
+IDD_PARA_DIALOG DIALOGEX 0, 0, 175, 210
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Parameter Color"
+FONT 9, "Tahoma", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,63,189,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,118,189,50,14
+    CONTROL         "",IDC_PARA_1,"Static",SS_WHITERECT | SS_NOTIFY,56,9,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_2,"Static",SS_WHITERECT | SS_NOTIFY,56,25,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_3,"Static",SS_WHITERECT | SS_NOTIFY,56,41,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_4,"Static",SS_WHITERECT | SS_NOTIFY,56,57,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_5,"Static",SS_WHITERECT | SS_NOTIFY,56,73,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_6,"Static",SS_WHITERECT | SS_NOTIFY,56,89,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_7,"Static",SS_WHITERECT | SS_NOTIFY,56,105,22,13,WS_EX_CLIENTEDGE
+    LTEXT           "Parameter 1",IDC_STATIC,7,9,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 2",IDC_STATIC,7,25,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 3",IDC_STATIC,7,41,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 4",IDC_STATIC,7,57,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 5",IDC_STATIC,7,73,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 6",IDC_STATIC,7,89,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 7",IDC_STATIC,7,105,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 8",IDC_STATIC,7,121,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 9",IDC_STATIC,7,137,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 10",IDC_STATIC,7,153,42,13,SS_CENTERIMAGE
+    CONTROL         "",IDC_PARA_8,"Static",SS_WHITERECT | SS_NOTIFY,56,120,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_9,"Static",SS_WHITERECT | SS_NOTIFY,56,136,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_10,"Static",SS_WHITERECT | SS_NOTIFY,56,152,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_11,"Static",SS_WHITERECT | SS_NOTIFY,144,9,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_12,"Static",SS_WHITERECT | SS_NOTIFY,144,25,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_13,"Static",SS_WHITERECT | SS_NOTIFY,144,41,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_14,"Static",SS_WHITERECT | SS_NOTIFY,144,57,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_15,"Static",SS_WHITERECT | SS_NOTIFY,144,73,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_16,"Static",SS_WHITERECT | SS_NOTIFY,144,89,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_17,"Static",SS_WHITERECT | SS_NOTIFY,144,105,22,13,WS_EX_CLIENTEDGE
+    LTEXT           "Parameter 11",IDC_STATIC,95,9,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 12",IDC_STATIC,95,25,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 13",IDC_STATIC,95,41,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 14",IDC_STATIC,95,57,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 15",IDC_STATIC,95,73,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 16",IDC_STATIC,95,89,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 17",IDC_STATIC,95,105,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 18",IDC_STATIC,95,121,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 19",IDC_STATIC,95,137,42,13,SS_CENTERIMAGE
+    LTEXT           "Parameter 20",IDC_STATIC,95,153,42,13,SS_CENTERIMAGE
+    CONTROL         "",IDC_PARA_18,"Static",SS_WHITERECT | SS_NOTIFY,144,120,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_19,"Static",SS_WHITERECT | SS_NOTIFY,144,136,22,13,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_PARA_20,"Static",SS_WHITERECT | SS_NOTIFY,144,152,22,13,WS_EX_CLIENTEDGE
+END
+
+IDD_DIALOG_AMKORDIR_SET DIALOG 0, 0, 247, 185
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "EO MARK Directory Setting"
+FONT 9, "Tahoma"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,164,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,67,164,50,14
+    LTEXT           "Edit Dir",IDC_STATIC,14,13,23,8
+    LTEXT           "Resource Dir",IDC_STATIC,13,28,40,8
+    LTEXT           "Font Dir",IDC_STATIC,13,44,26,8
+    LTEXT           "HPGL Dir",IDC_STATIC,13,60,28,8
+    LTEXT           "Template Dir",IDC_STATIC,13,76,41,8
+    LTEXT           "Project Dir",IDC_STATIC,13,92,34,8
+    EDITTEXT        IDC_EDIT_EDIT_DIR,85,11,155,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_FONT_DIR,85,42,155,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_RSC_DIR,85,26,155,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_HPGL_DIR,85,58,155,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_TMP_DIR,85,74,155,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PRJ_DIR,85,91,155,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BUTTON_EDITDIR,66,11,16,12
+    PUSHBUTTON      "...",IDC_BUTTON_RSC_DIR,66,26,16,12
+    PUSHBUTTON      "...",IDC_BUTTON_FONT_DIR,66,42,16,12
+    PUSHBUTTON      "...",IDC_BUTTON_HPGL_DIR,66,58,16,12
+    PUSHBUTTON      "...",IDC_BUTTON_TMP_DIR,66,74,16,12
+    PUSHBUTTON      "...",IDC_BUTTON_PRJ_DIR,66,90,16,12
+    LTEXT           "Field Size",IDC_STATIC_FIELD,13,129,29,8
+    EDITTEXT        IDC_EDIT_FIELD_SET,65,128,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_COMPANY,65,144,40,14,ES_AUTOHSCROLL
+    LTEXT           "CompanyCode",IDC_STATIC_COMPANY,13,145,46,8
+    LTEXT           "Parameter file",IDC_STATIC,14,108,44,8
+    EDITTEXT        IDC_EDIT_PEN_DIR,85,107,155,12,ES_AUTOHSCROLL | ES_WANTRETURN
+    PUSHBUTTON      "...",IDC_BUTTON_PEN_DIR,66,106,16,12
+END
+
+IDD_LASER_SOURCE DIALOG 0, 0, 171, 327
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Laser"
+FONT 9, "Tahoma"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,29,302,50,18
+    PUSHBUTTON      "Cancel",IDCANCEL,87,302,50,18
+    CONTROL         "YAG1",IDC_YAG,"Button",BS_AUTORADIOBUTTON | WS_GROUP,17,14,32,12
+    CONTROL         "YAG2",IDC_YAG2,"Button",BS_AUTORADIOBUTTON,53,14,32,12
+    CONTROL         "YAG3",IDC_YAG3,"Button",BS_AUTORADIOBUTTON,88,15,32,12
+    CONTROL         "CO2",IDC_CO2,"Button",BS_AUTORADIOBUTTON,127,15,27,12
+    CONTROL         "Single",IDC_SINGLE_HEAD,"Button",BS_AUTORADIOBUTTON | WS_GROUP,16,229,32,12
+    CONTROL         "Dual",IDC_DUAL_HEAD,"Button",BS_AUTORADIOBUTTON,98,229,27,12
+    GROUPBOX        "Source",IDC_STATIC,7,33,157,146,BS_FLAT
+    GROUPBOX        "Laser mode",IDC_STATIC,7,2,157,29,BS_FLAT
+    GROUPBOX        "Head",IDC_STATIC,7,214,157,29,BS_FLAT
+    CONTROL         "Spectron",IDC_SPECTRON,"Button",BS_AUTORADIOBUTTON | WS_GROUP,16,54,42,10
+    CONTROL         "Rofin",IDC_ROFIN,"Button",BS_AUTORADIOBUTTON,62,55,31,10
+    CONTROL         "Quantronix",IDC_QUANTRONIX,"Button",BS_AUTORADIOBUTTON,107,56,50,10
+    CONTROL         "Hana mia",IDC_HANA,"Button",BS_AUTORADIOBUTTON,16,69,44,10
+    CONTROL         "LEE (EO)",IDC_LEE,"Button",BS_AUTORADIOBUTTON,62,70,45,10
+    CONTROL         "Coherent",IDC_COHERENT,"Button",BS_AUTORADIOBUTTON,107,71,45,10
+    CONTROL         "IPG Fiber",IDC_IPGFIBER,"Button",BS_AUTORADIOBUTTON,16,85,44,10
+    CONTROL         "SPI Fiber",IDC_SPIFIBER,"Button",BS_AUTORADIOBUTTON,62,85,43,10
+    CONTROL         "Bicronix",IDC_BICRONIX,"Button",BS_AUTORADIOBUTTON,107,85,39,10
+    CONTROL         "JDSU",IDC_JDSU,"Button",BS_AUTORADIOBUTTON,17,113,32,10
+    CONTROL         "Laservall",IDC_LASERVALL,"Button",BS_AUTORADIOBUTTON,17,141,41,10
+    CONTROL         "No Use",IDC_NOUSE,"Button",BS_AUTORADIOBUTTON,17,161,38,10
+    GROUPBOX        "Default Power",IDC_STATIC,7,247,157,49,BS_FLAT
+    EDITTEXT        IDC_EDIT_POWER_N,124,257,24,14,ES_AUTOHSCROLL
+    LTEXT           "%",IDC_STATIC,155,260,8,8
+    EDITTEXT        IDC_EDIT_POWER_L,48,258,24,14,ES_AUTOHSCROLL
+    LTEXT           "%",IDC_STATIC,74,260,8,8
+    EDITTEXT        IDC_EDIT_POWER_M,48,277,24,14,ES_AUTOHSCROLL
+    LTEXT           "%",IDC_STATIC,75,280,8,8
+    CTEXT           "Low Limit",IDC_STATIC,13,258,31,13,SS_CENTERIMAGE
+    CTEXT           "Nomal Limit",IDC_STATIC,85,258,36,13,SS_CENTERIMAGE
+    CTEXT           "High Limit",IDC_STATIC,11,276,36,13,SS_CENTERIMAGE
+    GROUPBOX        "General",IDC_STATIC,13,45,145,56
+    GROUPBOX        "UV",IDC_STATIC,13,102,145,25
+    GROUPBOX        "Green",IDC_STATIC,13,130,145,25
+    GROUPBOX        "RTC board",IDC_STATIC,7,183,157,29,BS_FLAT
+    CONTROL         "Scanlab",IDC_SCANLAB,"Button",BS_AUTORADIOBUTTON | WS_GROUP,17,196,39,10
+    CONTROL         "3rdEye",IDC_3RDEYE,"Button",BS_AUTORADIOBUTTON,62,196,38,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041204B0"
+        BEGIN
+            VALUE "FileDescription", "Options MFC 응용 프로그램"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "Options"
+            VALUE "LegalCopyright", "Copyright (C) 2004"
+            VALUE "OriginalFilename", "Options.EXE"
+            VALUE "ProductName", "Options 응용 프로그램"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_OPTIONS_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 230
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 381
+    END
+
+    IDD_VIEW_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 212
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 194
+    END
+
+    IDD_LOG_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 178
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 250
+    END
+
+    IDD_DIR_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 140
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 158
+    END
+
+    IDD_PARA_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 168
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 203
+    END
+
+    IDD_DIALOG_AMKORDIR_SET, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 240
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 178
+    END
+
+    IDD_LASER_SOURCE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 164
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 320
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_DRIVES              BITMAP                  "res\\IDB_DRIVES.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ABOUTBOX            "Options 정보(&A)..."
+END
+
+#endif    // 한국어(대한민국) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE 18, 1
+#pragma code_page(949)
+#endif //_WIN32
+#include "res\Options.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.kor\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
