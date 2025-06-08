@@ -372,10 +372,6 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 	m_dMaxField = dFieldSize;
 	m_dMaxMM = dMmSize;
 
-	// 여기까지 수정함
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	CString strTemp;
-
 	CString ModeValue = _T("");
 	CString sitePath = _iniutil.ReplacePathVariables(_iniutil.PATH_INI_SITE);
 	_iniutil.LoadStringValueByKey(_T("Settings"), _T("Mode"), sitePath, ModeValue);
@@ -387,25 +383,15 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 	return 0;
 #endif
 
-	double dFlagOffsetStart = HEAD1ScannerParameter.flagOffset; 
-	double dFlagOffsetEnd = atof(strTemp);
-
-	LONG CornerScale = 500;
-	LONG EndScale = 500;
-	LONG AccScale = 50;
-	UINT uMode, uPrevTime, uVmax, uAmax;
-	uPrevTime = 0;
-	uVmax = 0;
-	uAmax = 0;
-
-	CornerScale = (LONG)HEAD1ScannerParameter.polygonDelay;
-	EndScale = (LONG)HEAD1ScannerParameter.markDelay;
-	AccScale = (LONG)HEAD1ScannerParameter.jumpDelay;
-
 #ifdef _RTC6_
 	// Scanahead: calculate delays automatically. excelliscan
 	//(const UINT CardNo, const UINT Mode, const UINT HeadNo, const UINT TableNo, const UINT PreViewTime, const UINT Vmax, const double Amax);
 #ifndef _SIMUL_
+	LONG CornerScale = (LONG)HEAD1ScannerParameter.polygonDelay;
+	LONG EndScale = (LONG)HEAD1ScannerParameter.markDelay;
+	LONG AccScale = (LONG)HEAD1ScannerParameter.jumpDelay;
+	UINT uPrevTime = 0, uVmax = 0, uAmax = 0;
+
 	select_rtc(RTC_CARD_NUM_1);
 	n_set_scanahead_params(RTC_CARD_NUM_1, 1, 1, 1, uPrevTime, uVmax, uAmax); // place anywhere after load_correction_file
 	n_activate_scanahead_autodelays(RTC_CARD_NUM_1, 1);
@@ -414,126 +400,46 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 #endif
 #endif
 
-	UINT iListNumber = 1;
-	CString strTmp;
-	LONG firstPosX, firstPosY, encoderX, encoderY;
-	BOOL bFirstRunFlag = TRUE;
-	BOOL FirstAutoFlag = TRUE;
-	BOOL bLastMarkFlag = FALSE;
-
-	double dScaleFactorX, dScaleFactorY;
-	dScaleFactorX = 0.0;
-	dScaleFactorY = 0.0;
+	double dScaleFactorX = 0.0, dScaleFactorY = 0.0;;
 
 	if (pFieldParameter->GetKX() != 0)
 		dScaleFactorX = (m_dMaxField / m_dMaxMM) / -pFieldParameter->GetKX();
 	if (pFieldParameter->GetKY() != 0)
 		dScaleFactorY = (m_dMaxField / m_dMaxMM) / -pFieldParameter->GetKY();
 
-	double dStartCutPosX = 0;
-	double dStartCutPosY = 0;
-
-	dStartCutPosX = pFieldParameter->GetScannerStartPosX();
-	dStartCutPosY = pFieldParameter->GetScannerStartPosY();
-
-	dStartCutPosX = dStartCutPosX * m_dMaxField / m_dMaxMM;
-	int iStepindex = STEP_UNFLAG_START;
-	int iStartSpeed = pParameter->GetUnflagLineSpeed();
-
-	double dTabHeight = stPocketData.dCuttingHeight + stPocketData.dCuttingOffset;
-	double dTabHeightField = dTabHeight * m_dMaxField / m_dMaxMM;
+	double dTabHeightField = (stPocketData.dCuttingHeight + stPocketData.dCuttingOffset) * m_dMaxField / m_dMaxMM;
 
 	// 2025.01.31 jjsjong 추가,
-	double dStartExtLenField = 0;
-	dStartExtLenField = HEAD1ScannerParameter.startExtLen * m_dMaxField / m_dMaxMM;
-
-	int nTabIndex = 0;
-	double nTabLengthSumTemp = 0;
-	double nTempCountCheck = 0;
-
-	nTabIndex = 0;
-	double iRealdistence = 0, iScnSpeed = 0, iRollSpeed = 0;
-	iScnSpeed = pParameter->GetUnflagLineSpeed();
-	iRollSpeed = pFieldParameter->GetRollSpeed();
-
-	int i = 0, iFieldWidth = 0;
-	iFieldWidth = pFieldParameter->GetMarkingField();
-	BOOL bSimulOn = pFieldParameter->GetSimulationFlag();
+	double dStartExtLenField = HEAD1ScannerParameter.startExtLen * m_dMaxField / m_dMaxMM;
 
 	double cs = cos(PI * pFieldParameter->GetFieldAngle() / 180);
 	double sn = sin(PI * pFieldParameter->GetFieldAngle() / 180);
 
 	pDsp->SetFlipHead1(TRUE);
 	pDsp->SetMatrixHEAD1(cs, sn);
-	int nTapIndexCount = 0;
-	double nEncoderScaleX = 40.0;
-	double nEncoderScaleY = 40.0;
-	int nSpeedIndexTest = 0;
-	double nNexSumCount = 0;
-	double nStartPos = 0;
-	double dFlagEncSum = 0;
 
-	pDlg->m_nEncoderSumCount = nStartPos;
-	nEncoderScaleX = pFieldParameter->GetKX();
-	nEncoderScaleY = pFieldParameter->GetKY();
+	pDlg->m_nEncoderSumCount = 0;
+	double nEncoderScaleX = pFieldParameter->GetKX();
+	double nEncoderScaleY = pFieldParameter->GetKY();
 	if (nEncoderScaleX < 0)
 		nEncoderScaleX = -nEncoderScaleX;
-	int iXoffset, iYoffset;
-	firstPosX = 0;
-	firstPosY = -dTabHeight;
+
 	pDsp->EnableLaserHEAD1();
-	iStepindex = 0;
-
-	UINT Minvalue, Maxvalue;
-	Minvalue = 0;
-	Maxvalue = 4095;
-
-	int nFlagStartOffsetx;
-	nFlagStartOffsetx = 100 * m_dMaxField / m_dMaxMM;
-
-	double dFlagOffset = 0;
-
-	double dRollSpeed = pFieldParameter->GetRollSpeed();
-	double dUnflagScannerSpeed = pParameter->GetUnflagLineSpeed();
 	pDsp->StopExcutionHEAD1();
 
 	UINT uStartPos = 0;
-	UINT uJumpPos = 0;
+	// UINT uJumpPos = 0;
 	UINT u2ndJumpPos = 0;
 	UINT uEndPos = 0;
-	UINT uFlagPos = 0;
-	UINT uJumpNGPos = 0;
-	UINT uIOPos = 0;
-
+	// UINT uFlagPos = 0;
+	// UINT uJumpNGPos = 0;
+	// UINT uIOPos = 0;
 	UINT uOncPattern = 0;
-
 	// NG 태그 관련 Pos
 	UINT uNGPos = 0;
 
-#ifndef _RTC_Test_
-	const double dFlagSafeAreaLength = 125;
-#else
-	const double dFlagSafeAreaLength = m_dMaxMM;
-#endif
-	bool bIsShotFlag = false;
-
-	firstPosX = 0;
-
 	pDsp->SetFirstStart(TRUE);
-	pDlg->m_nEncoderSumCount = 0;
 
-	const double dMaxValidPos = 0;
-	const double dAddAmount = 0;
-	double dTempValue = 0;
-	double dOverflowField = m_dMaxMM / 2 * m_dMaxField / m_dMaxMM;
-	double dFlagDistanceField = 0;
-	LONG HEAD1EncoderY, HEAD1EncoderX;
-	HEAD1EncoderX = 0;
-	HEAD1EncoderY = 0;
-
-	CString strLogData;
-
-	// 이부분 디버깅 테스트 필요
 	double dNotchingWidth[MAX_SPREAD_ROW] = {0.0}; // 노칭길이 배열
 	double dBefTotalWidth = 0.0;
 	int nFlagCount = stPocketData.dTabCount;
@@ -543,8 +449,6 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 		dNotchingWidth[i] = stPocketData.dNotchingRealWidth[i] - dBefTotalWidth;
 		dBefTotalWidth += dNotchingWidth[i] + stPocketData.dCuttingWidth;
 	}
-
-	double dPatternShiftLength = HEAD1ScannerParameter.dPatternShift; // 1회 운전과 연동 운전의 선단부위치 보정 값
 
 	/////////////////////////////////////////////////////////////// LIST 1 START //////////////////////////////////////////////////////////////////
 	pDsp->SetStartListHEAD1(1); // 1번 리스트 시작
@@ -562,19 +466,12 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 #endif
 	uStartPos = pDsp->nGetInputPointer(RTC_CARD_NUM_1);
 
-	double dTempEncX = 0.0;
-	double dSensorLeng = HEAD1ScannerParameter.dNGSensorLeng; // 무지부 센서와 레이저 조사부의 사이거리
-
-	i = 0;
 	// 2025.01.31 jjsjong 스케일 통일
 	double dNotchingKX = pFieldParameter->GetKX();
 	if (dNotchingKX < 0)
 	{
 		dNotchingKX = -dNotchingKX;
 	}
-
-	dStartCutPosX = pFieldParameter->GetScannerStartPosX();
-	dStartCutPosY = pFieldParameter->GetScannerStartPosY();
 
 	pDsp->EnableLaserHEAD1();
 
@@ -584,6 +481,8 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 	pDsp->SetFlyXHEAD1(1.0);
 	pDsp->SetFlyXHEAD1(0.0);
 
+	double dStartCutPosX = pFieldParameter->GetScannerStartPosX();
+	double dStartCutPosY = pFieldParameter->GetScannerStartPosY();
 	pDsp->N_Jump_Abs(RTC_CARD_NUM_1, dStartCutPosX, dStartCutPosY, MM);
 	pDsp->N_Mark_Abs(RTC_CARD_NUM_1, dStartCutPosX, 0, MM);
 
@@ -611,9 +510,9 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 	pDsp->SetFlyXHEAD1(dScaleFactorX);
 	pDsp->N_Mark_Abs(RTC_CARD_NUM_1, 0, 0, MM); // Laser On Trigger
 
-	nNexSumCount = 0;
+	double nNexSumCount = 0;
 	////////////////////////////////////////////// 2ndJumpPos End //////////////////////////////////////////////////////////////
-	nNexSumCount += (dNotchingWidth[0] + dSensorLeng - stPocketData.dArcInYPos);
+	nNexSumCount += (dNotchingWidth[0] + HEAD1ScannerParameter.dNGSensorLeng - stPocketData.dArcInYPos);
 
 	// 들어와서 레이저 안쏨
 	pDlg->m_nEncoderSumCount = (int)mathUtil.Round(nNexSumCount * dNotchingKX, 0);
@@ -814,7 +713,7 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 
 	nNexSumCount = 0;
 	////////////////////////////////////////////// 2ndJumpPos End //////////////////////////////////////////////////////////////
-	nNexSumCount += (dNotchingWidth[0] + dSensorLeng - stPocketData.dArcInYPos + dPatternShiftLength);
+	nNexSumCount += (dNotchingWidth[0] + HEAD1ScannerParameter.dNGSensorLeng - stPocketData.dArcInYPos + HEAD1ScannerParameter.dPatternShift);
 
 	pDlg->m_nEncoderSumCount = (int)mathUtil.Round(nNexSumCount * dNotchingKX, 0);
 	pDsp->WaitForEncoderHEAD1(pDlg->m_nEncoderSumCount, 1);
@@ -846,8 +745,6 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 
 	pDlg->m_nEncoderSumCount = (int)mathUtil.Round(nNexSumCount * dNotchingKX, 0);
 	pDsp->WaitForEncoderHEAD1(pDlg->m_nEncoderSumCount, 1);
-
-	nFlagCount = stPocketData.dTabCount;
 
 	// i를 이어작업 시 가변되도록 변경해야함
 	for (int i = 0; i < nFlagCount; i++)
@@ -1012,19 +909,11 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 	pDsp->SetEndOfListHEAD1();
 	pDsp->SetFirstStart(FALSE);
 
-	UINT uBusy, uPos;
-
 	pDsp->EnableLaserHEAD1();
 
 	stStat = pDsp->ReadStatusHEAD1();
 
 	BOOL bRestartProgramCheck = FALSE;
-
-	int nIOTestFor_ABTytpe;
-	if (ModeValue == _T("Cathode_B") || ModeValue == _T("Anode_B")) // 정노칭
-		nIOTestFor_ABTytpe = RTC_SIG_I_NOTCHING_SENSOR_A;
-	else
-		nIOTestFor_ABTytpe = RTC_SIG_I_NOTCHING_SENSOR_B; // 역노칭
 
 	if (bRestartProgramCheck == FALSE)
 	{
@@ -1038,43 +927,24 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 		bRestartProgramCheck = TRUE;
 	}
 
-	long nEncX, nEncY;
-	long nTmpEncY;
-
-	BOOL bRestartCheck = TRUE;
-	BOOL bRestartCheck_BEF = TRUE;
-
-	double dSecondEncResetPosWidth;
-	dSecondEncResetPosWidth = stPocketData.dTotalWidth - (stPocketData.dNotchingWidth[0] + stPocketData.dCuttingWidth);
-
-	double dEncoderPreValue;
-
 	BOOL bLaserOnCheck = TRUE;
 	BOOL bLaserOnCheckBef = TRUE;
 
 	BOOL bNGCheck = TRUE;
 	BOOL bNGCheck_BEF = TRUE;
 
-	long nNgWaitX, nNGWaitY;
+	BOOL bMainInfo = TRUE;
+	BOOL bMainInfo_Bef = TRUE;
 
-	double dNGSensorLength;
-	dNGSensorLength = HEAD1ScannerParameter.ngLength;
+	BOOL bAccCheck = TRUE;
+	BOOL bAccCheck_Bef = TRUE;
 
-	double dTapePos;
+	BOOL bZigCheck = TRUE;
+	BOOL bZigCheck_Bef = TRUE;
 
-	CString strNGLog, strLog;
-
-	BOOL bMainInfo, bMainInfo_Bef;
-	bMainInfo = bMainInfo_Bef = TRUE;
-
-	double dVisionWidth, dVisionOffset;
-
-	BOOL bAccCheck, bAccCheck_Bef;
-	bAccCheck = bAccCheck_Bef = TRUE;
-
-	BOOL bZigCheck, bZigCheck_Bef;
-	bZigCheck = bZigCheck_Bef = TRUE;
-
+	long nEncX = 0.0, nEncY = 0.0;
+	long nNgWaitX = 0.0, nNGWaitY = 0.0;
+	double dTapePos = 0.0;
 	CString strTmpData;
 
 	while (pDlg->m_bThreadAlive)
@@ -1174,79 +1044,8 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 			pDsp->nOutputIO(RTC_CARD_NUM_1, RTC_SIG_O_PROGRESS, FALSE);
 		}
 		bLaserOnCheck = bLaserOnCheckBef;
-		// TEST 250410_1356 LDY - 첫 탭 위치 보정용 테스트
-		// 1. MES 를 통해 전체극판길이를 받아서 처리
-		// 현재 도면상 극판길이 : stPocketData.dTotalWidth;
-		// MES에서 받은 극판길이를 따로 저장해서 위 TotalWidth를 빼면 +- 값 확인가능
-		// 그 길이를 바탕으로 점프타이밍 변경
-		
-		
-		// 2. 엔코더 대기 중 리셋을 시켜 첫 노칭길이가 길어지도록 수정
-//#ifdef _RTC_Test_
-//		if(pDsp->nGetInputValue(RTC_CARD_NUM_1, 0x08) == TRUE)
-//#else
-//		if((pDsp->nGetInputValue(RTC_CARD_NUM_1, RTC_SIG_I_NOTCHING_SENSOR_A) == TRUE) || (pDsp->nGetInputValue(RTC_CARD_NUM_1, RTC_SIG_I_NOTCHING_SENSOR_B) == TRUE))
-//#endif
-//		{
-//			bMainInfo_Bef = TRUE;
-//			if(bMainInfo != bMainInfo_Bef)
-//			{
-//				pDsp->nOutputIO(RTC_CARD_NUM_1, RTC_SIG_O_ACTUAL_FIRST_TAB, TRUE);
-//			}
-//			_iniutil.LoadRealWidthIni(dVisionWidth);
-//			dVisionOffset = dVisionWidth - stPocketData.dTotalWidth + HEAD1ScannerParameter.dPlcOffset; // PLC 옵셋 적용해야함
-//			while(TRUE)
-//			{
-//#ifdef _RTC_Test_
-//				if(pDsp->nGetInputValue(RTC_CARD_NUM_1, 0x08) == FALSE)
-//#else
-//				if((pDsp->nGetInputValue(RTC_CARD_NUM_1, RTC_SIG_I_NOTCHING_SENSOR_A) == FALSE) && (pDsp->nGetInputValue(RTC_CARD_NUM_1, RTC_SIG_I_NOTCHING_SENSOR_B) == FALSE))
-//#endif
-//				{
-//					bMainInfo_Bef = FALSE;
-//					if(bMainInfo != bMainInfo_Bef)
-//					{
-//						pDsp->nOutputIO(RTC_CARD_NUM_1, RTC_SIG_O_ACTUAL_FIRST_TAB, FALSE);
-//					}
-//					Sleep(1);
-//					break;
-//				}
-//			}
-//			bMainInfo = bMainInfo_Bef;
-//			// 한번만 체크해야함 - 어차피 밑에 While 문 타면 더 못타긴함 
-//			pDsp->GetEncodeHEAD1(nNgWaitX, nNGWaitY);
-//			double dRestartPosLeng = nNGWaitY / pFieldParameter->GetKX();
-//			while(TRUE) // 센서길이만큼 대기 + 옵셋값만큼 더 대기( +- 둘다 가능 )
-//			{
-//				Sleep(1);
-//				pDsp->GetEncodeHEAD1(nNgWaitX, nNGWaitY);
-//				if(pDsp->nGetInputValue(RTC_CARD_NUM_1, 0x04) == TRUE)
-//				{
-//					// 1회운전
-//					if(dRestartPosLeng + HEAD1ScannerParameter.dNGSensorLeng + dVisionOffset < nNGWaitY / pFieldParameter->GetKX())
-//						break;
-//				} else
-//				{
-//					// 연속운전
-//					if(dRestartPosLeng + HEAD1ScannerParameter.dNGSensorLeng + dVisionOffset + HEAD1ScannerParameter.dPatternShift < nNGWaitY / pFieldParameter->GetKX())
-//						break;
-//				}
-//			}
-//			//n_stop_execution(RTC_CARD_NUM_1);
-//			//Sleep(1);
-//			//// IO 상태에 따라 1회운전로직 / 연속운전로직 변경
-//			//if(pDsp->nGetInputValue(RTC_CARD_NUM_1, 0x04) == TRUE)
-//			//{
-//			//	// 1회운전
-//			//	n_execute_list_pos(RTC_CARD_NUM_1, 1, uOncPattern);
-//			//} else
-//			//{
-//			//	// 연속운전
-//			//	n_execute_list_pos(RTC_CARD_NUM_1, 1, u2ndJumpPos);
-//			//}
-//		}
 
-		strLog = " ";
+		UINT uBusy, uPos;
 		pDsp->nGetstatus(RTC_CARD_NUM_1, uBusy, uPos);
 
 		// 연결테이프 로직
@@ -1258,9 +1057,10 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 				// 센서길이 대기
 				pDsp->GetEncodeHEAD1(nNgWaitX, nNGWaitY);
 				double dPreEnc = nNGWaitY / pFieldParameter->GetKX();
-				strNGLog.Format("[NG TEST] dPreEnc : %0.2f", dPreEnc);
+				// CString strNGLog;
+				// strNGLog.Format("[NG TEST] dPreEnc : %0.2f", dPreEnc);
 
-				dTapePos = dPreEnc + dNGSensorLength;
+				dTapePos = dPreEnc + HEAD1ScannerParameter.ngLength;
 
 				if (dTapePos >= stPocketData.dTotalWidth)
 				{
