@@ -475,24 +475,65 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 
 	pDsp->EnableLaserHEAD1();
 
-	// 엔코더 리셋
+	double dStartCutPosX = pFieldParameter->GetScannerStartPosX();
+	double dStartCutPosY = pFieldParameter->GetScannerStartPosY();
+	pDsp->N_Jump_Abs(RTC_CARD_NUM_1, dStartCutPosX, dStartCutPosY, MM);
+	pDsp->N_Mark_Abs(RTC_CARD_NUM_1, dStartCutPosX, 0, MM);
+	pDsp->N_Mark_Abs(RTC_CARD_NUM_1, 0, 0, MM);
+
+#ifndef _RTC_Test_
+	if (ModeValue == _T("Cathode_B") || ModeValue == _T("Anode_B"))
+	{
+		pDsp->nIf_not_Cond(RTC_CARD_NUM_1, 0x401, 0);
+		pDsp->nListJumpRel(RTC_CARD_NUM_1, -1);
+	}
+	else if (ModeValue == _T("Cathode_A") || ModeValue == _T("Anode_A"))
+	{
+		pDsp->nIf_not_Cond(RTC_CARD_NUM_1, 0x801, 0);
+		pDsp->nListJumpRel(RTC_CARD_NUM_1, -1);
+	}
+#endif // !_RTC_Test_
+#ifdef _RTC_Test_
+	pDsp->nIf_not_Cond(RTC_CARD_NUM_1, 0x101, 0);
+	pDsp->nListJumpRel(RTC_CARD_NUM_1, -1);
+#endif // _RTC_Test_
+
+	// ---첫패턴과 나머지 패턴을 맞추기 위해 루프 끝 부분 차이나는 것들 다 가져옴. 불필요한 내용은 추후 삭제 필요.---
+	pDsp->N_Mark_Rel(RTC_CARD_NUM_1, -dEncoderOffset2, 0, MM);
+
+	// 가감속 패턴 쉬프트용 리셋
 	pDsp->SetFlyYHEAD1(1.0);
 	pDsp->SetFlyYHEAD1(0.0);
 	pDsp->SetFlyXHEAD1(1.0);
 	pDsp->SetFlyXHEAD1(0.0);
 
-	double dStartCutPosX = pFieldParameter->GetScannerStartPosX();
-	double dStartCutPosY = pFieldParameter->GetScannerStartPosY();
-	pDsp->N_Jump_Abs(RTC_CARD_NUM_1, dStartCutPosX, dStartCutPosY, MM);
-	pDsp->N_Mark_Abs(RTC_CARD_NUM_1, dStartCutPosX, 0, MM);
-
-	pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.nonflagFreq, HEAD1ScannerParameter.pulsewidth);
-	pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.nonflagPower);
-
-	pDsp->SetFlyXHEAD1(dScaleFactorX);
+	pDsp->N_Fly_Return(RTC_CARD_NUM_1, dEncoderOffset2, 0, MM);
 	pDsp->N_Mark_Abs(RTC_CARD_NUM_1, 0, 0, MM);
 
-	pDsp->nListJumpRel(RTC_CARD_NUM_1, 13); // 상대적으로 아래 n번째꺼 실행
+	double nTempEnc = HEAD1ScannerParameter.dPlcOffset; // 연속운전 및 지그클리닝 이후 가속부에 패턴 쉬프트를 위한 Offset
+	pDlg->m_nEncoderSumCount = (int)mathUtil.Round(nTempEnc * dNotchingKX, 0);
+	pDsp->nIf_Cond(RTC_CARD_NUM_1, 0x08, 0); // 가감속( 0x08 )이 들어와 있으면
+	pDsp->WaitForEncoderHEAD1(pDlg->m_nEncoderSumCount, 1);
+
+	pDsp->N_Mark_Rel(RTC_CARD_NUM_1, -dEncoderOffset2, 0, MM);
+	// ---end---
+
+	// 엔코더 리셋
+	//pDsp->SetFlyYHEAD1(1.0);
+	//pDsp->SetFlyYHEAD1(0.0);
+	//pDsp->SetFlyXHEAD1(1.0);
+	//pDsp->SetFlyXHEAD1(0.0);
+
+	//pDsp->N_Jump_Abs(RTC_CARD_NUM_1, dStartCutPosX, dStartCutPosY, MM);
+	//pDsp->N_Mark_Abs(RTC_CARD_NUM_1, dStartCutPosX, 0, MM);
+
+	//pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.nonflagFreq, HEAD1ScannerParameter.pulsewidth);
+	//pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.nonflagPower);
+
+	//pDsp->SetFlyXHEAD1(dScaleFactorX);
+	//pDsp->N_Mark_Abs(RTC_CARD_NUM_1, 0, 0, MM);
+
+	//pDsp->nListJumpRel(RTC_CARD_NUM_1, 13); // 상대적으로 아래 n번째꺼 실행
 	////////////////////////////////////////////// 2ndJumpPos Start ////////////////////////////////////////////////////////////
 	u2ndJumpPos = pDsp->nGetInputPointer(RTC_CARD_NUM_1);
 
@@ -683,7 +724,6 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 	pDsp->N_Fly_Return(RTC_CARD_NUM_1, dEncoderOffset2, 0, MM);
 	pDsp->N_Mark_Abs(RTC_CARD_NUM_1, 0, 0, MM);
 
-	double nTempEnc = HEAD1ScannerParameter.dPlcOffset; // 연속운전 및 지그클리닝 이후 가속부에 패턴 쉬프트를 위한 Offset
 	pDlg->m_nEncoderSumCount = (int)mathUtil.Round(nTempEnc * dNotchingKX, 0);
 	pDsp->nIf_Cond(RTC_CARD_NUM_1, 0x08, 0); // 가감속( 0x08 )이 들어와 있으면
 	pDsp->WaitForEncoderHEAD1(pDlg->m_nEncoderSumCount, 1);
