@@ -2,3 +2,12 @@
 *.sdf
 *.ipch
 *.suo
+*.pch
+*.lastbuildstate
+*.log
+*.tlog
+*.unsuccessfulbuild
+*.sbr
+*.obj
+*.pdb
+*.idb
