@@ -730,7 +730,7 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 
 	pDsp->N_Mark_Rel(RTC_CARD_NUM_1, -dEncoderOffset2, 0, MM);
 
-	pDsp->nIf_not_Cond(RTC_CARD_NUM_1, 0x10, 0);  // 0x10 : 1회운전 I/O // 4번
+	//pDsp->nIf_not_Cond(RTC_CARD_NUM_1, 0x10, 0);  // 0x10 : 1회운전 I/O // 4번
 	n_list_jump_pos(RTC_CARD_NUM_1, u2ndJumpPos); // <-- 1회운전 I/O 들어올 시 무시
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -890,11 +890,11 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 	pDsp->SetFlyXHEAD1(1.0);
 	pDsp->SetFlyXHEAD1(0.0);
 
-	pDsp->nIf_not_Cond(RTC_CARD_NUM_1, 0x10, 0);  // 0x10 : 1회운전 I/O
+	//pDsp->nIf_not_Cond(RTC_CARD_NUM_1, 0x10, 0);  // 0x10 : 1회운전 I/O
 	n_list_jump_pos(RTC_CARD_NUM_1, u2ndJumpPos); // <-- 1회운전 I/O 들어올 시 무시
 
-	pDsp->nIf_Cond(RTC_CARD_NUM_1, 0x10, 0);	  // 0x10 : 1회운전 I/O
-	n_list_jump_pos(RTC_CARD_NUM_1, uOncPattern); // <-- 1회운전 I/O 들어올 시 실행
+	//pDsp->nIf_Cond(RTC_CARD_NUM_1, 0x10, 0);	  // 0x10 : 1회운전 I/O
+	//n_list_jump_pos(RTC_CARD_NUM_1, uOncPattern); // <-- 1회운전 I/O 들어올 시 실행
 
 	///////////////////////////////////////////////// NG Tape /////////////////////////////////////////////////////
 	uNGPos = pDsp->nGetInputPointer(RTC_CARD_NUM_1);
@@ -940,10 +940,10 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 	}
 	pDsp->N_Mark_Rel(RTC_CARD_NUM_1, -dEncoderOffset2, 0, MM);
 
-	pDsp->nIf_not_Cond(RTC_CARD_NUM_1, 0x10, 0);
+	//pDsp->nIf_not_Cond(RTC_CARD_NUM_1, 0x10, 0);
 	n_list_jump_pos(RTC_CARD_NUM_1, u2ndJumpPos);
-	pDsp->nIf_Cond(RTC_CARD_NUM_1, 0x10, 0);
-	n_list_jump_pos(RTC_CARD_NUM_1, uOncPattern);
+	//pDsp->nIf_Cond(RTC_CARD_NUM_1, 0x10, 0);
+	//n_list_jump_pos(RTC_CARD_NUM_1, uOncPattern);
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	pDsp->SetEndOfListHEAD1();
