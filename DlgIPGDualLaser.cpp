@@ -191,6 +191,7 @@ CDlgIPGDualLaser::CDlgIPGDualLaser(CWnd* pParent /*=NULL*/)
 
 	bDlgInitFlag = FALSE;
 
+	bIsOperationStart = FALSE;
 	
 	/*CPointerManager *pPointerManager = pPointerManager->GetInstance();
 	pPointerManager->SetDlgLaserControl(m_pLaserHEAD1);*/
@@ -268,7 +269,10 @@ std::string decimalToBuintary(int decimalValude)//10to2
 	return std::bitset<8>(decimalValude).to_string();
 }
 
-
+void CDlgIPGDualLaser::SetOperation(BOOL bStart)
+{
+	bIsOperationStart = bStart;
+}
 
 void CDlgIPGDualLaser::HEAD1classification()
 {
@@ -335,7 +339,7 @@ void CDlgIPGDualLaser::HEAD1classification()
 	}
 
 	//2025.05.12 
-	if(binaryHEAD1Status[1] == 1 && binaryHEAD1Status[2] == 1 && binaryHEAD1Status[3] == 1  )
+	if(binaryHEAD1Status[1] == 1 && binaryHEAD1Status[2] == 1 && binaryHEAD1Status[3] == 1 && bIsOperationStart)
 	{
 		pDsp->nOutputIO(RTC_CARD_NUM_1, RTC_SIG_O_READY, TRUE);
 	}

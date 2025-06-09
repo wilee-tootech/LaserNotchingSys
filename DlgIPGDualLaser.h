@@ -340,7 +340,10 @@ public:
 	BOOL bDlgInitFlag;
 
 	int  nErrorID;
-	
+
+	BOOL bIsOperationStart;
+	void SetOperation(BOOL bStart);
+
 	void SendIPGHEAD2DataFromMRK(IPGData data);
 	void SendIPGHEAD1DataFromMRK(IPGData data);
 	void SendPowerSet(int val);
