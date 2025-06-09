@@ -11,3 +11,6 @@
 *.obj
 *.pdb
 *.idb
+*.bsc
+*.exe
+*.ilk
