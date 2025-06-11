@@ -372,7 +372,8 @@ void CDlgIPGDualLaser::HEAD1classification()
 		}
 	}
 
-	// 2025.05.12
+	// 2025.05.12.
+	// 2025.06.11. 레이저만 켜면 Stop 상태에서도 Ready IO 보내는 현상 -> bIsOperationStart 변수 추가함.
 	if (binaryHEAD1Status[1] == 1 && binaryHEAD1Status[2] == 1 && binaryHEAD1Status[3] == 1 && bIsOperationStart)
 	{
 		pDsp->nOutputIO(RTC_CARD_NUM_1, RTC_SIG_O_READY, TRUE);

@@ -341,8 +341,8 @@ public:
 
 	int  nErrorID;
 
-	BOOL bIsOperationStart;
-	void SetOperation(BOOL bStart);
+	BOOL bIsOperationStart; // Start 눌러져있는지 여부
+	void SetOperation(BOOL bStart); // Start 또는 Stop 누르면 값 전달받음
 
 	void SendIPGHEAD2DataFromMRK(IPGData data);
 	void SendIPGHEAD1DataFromMRK(IPGData data);
