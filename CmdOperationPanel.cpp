@@ -17,6 +17,9 @@
 #include "./RECIPE_MODULE/RecipeManager.h"
 #include "DlgTestCut.h"
 
+#include "DlgIPGDualLaser.h"
+#include "InforSetupPanel.h"
+
 // CCmdOperationPanel
 
 IMPLEMENT_DYNCREATE(CCmdOperationPanel, CProjectBaseView)
@@ -151,6 +154,8 @@ void CCmdOperationPanel::ClickCtpushctrlOperationStart()
     m_btnReset.Invalidate();
     m_btnInit.SetState(TRUE);
     m_btnInit.Invalidate();
+
+	pMainFrm->m_pDoc->m_pInforSetupPanel->m_pDlgIPGDualLaser->SetOperation(TRUE);
 }
 
 
@@ -187,6 +192,7 @@ void CCmdOperationPanel::ClickCtpushctrlOperationStop()
     m_btnStart.Invalidate();
     m_btnInit.SetState(TRUE);
     m_btnInit.Invalidate();
+	pMainFrm->m_pDoc->m_pInforSetupPanel->m_pDlgIPGDualLaser->SetOperation(FALSE);
 }
 
 

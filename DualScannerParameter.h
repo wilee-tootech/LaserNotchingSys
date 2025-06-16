@@ -47,11 +47,11 @@ struct SingleScannerParameter
 	double dCuttingOffset;
 
 	double dMinFlagLeng;
-	double dNGSensorLeng;
+	double dNGSensorLeng; // 무지부 센서와 레이저 조사부의 사이거리
 
 	double dACSensorLeng;
 
-	double dPatternShift;
+	double dPatternShift; // 1회 운전과 연동 운전의 선단부위치 보정 값
 
 	double dPlcOffset;
 
