@@ -571,11 +571,29 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 
 	/////// ARC IN START
 	pDsp->nSetScannerParameter(RTC_CARD_NUM_1, HEAD1ScannerParameter.markSpeed, HEAD1ScannerParameter);
+	pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.arcFreq, HEAD1ScannerParameter.pulsewidth);
+	pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.arcPower);
+
+	double centerX = stPocketData.dArcInXPos * dFieldSize / dMmSize;
+	double centerY = stPocketData.dArcInYPos * dFieldSize / dMmSize;
+	double radius  = 4 * dFieldSize / dMmSize;
+
+	// 첫 번째 arc: 현재 위치에서 (centerX, centerY) 기준으로 -45도
+	n_arc_rel(RTC_CARD_NUM_1, centerX, centerY, -stPocketData.dArcDegree);
+
+	// ★ 두 번째 arc를 위한 현재 위치 보정
+	// 첫 arc 후 현재 위치는 -45도 위치. 새 중심까지 상대 좌표 다시 계산
+
+	double angle_rad = -(90 - stPocketData.dArcDegree) * PI / 180.0;
+	double currX = centerX + radius * cos(angle_rad); // 현재 x 좌표
+	double currY = centerY + radius * sin(angle_rad); // 현재 y 좌표
+
+	double dx2 = centerX - currX;
+	double dy2 = centerY - currY;
+	pDsp->nSetScannerParameter(RTC_CARD_NUM_1,HEAD1ScannerParameter.flagSpeed, HEAD1ScannerParameter);
 	pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagFreq, HEAD1ScannerParameter.pulsewidth);
 	pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagPower);
-	// pDsp->N_Mark_Rel(RTC_CARD_NUM_1, 1, 0, MM); // Test
-	n_arc_rel(RTC_CARD_NUM_1, (stPocketData.dArcInXPos * dFieldSize / dMmSize), (stPocketData.dArcInYPos * dFieldSize / dMmSize), -90);
-	pDsp->nSetScannerParameter(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagSpeed, HEAD1ScannerParameter);
+	n_arc_rel(RTC_CARD_NUM_1, dx2, dy2, -(90 - stPocketData.dArcDegree));
 	/////// ARC IN END
 
 	pDsp->N_Mark_Rel(RTC_CARD_NUM_1, 0, dTabHeightField - (stPocketData.dArcInYPos * dFieldSize / dMmSize));
@@ -604,17 +622,42 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 		pDsp->SetFlyXHEAD1(dScaleFactorX);
 
 		/////// ARC OUT START
-		pDsp->nSetScannerParameter(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagExtSpeed, HEAD1ScannerParameter);
+		pDsp->nSetScannerParameter(RTC_CARD_NUM_1,HEAD1ScannerParameter.flagExtSpeed, HEAD1ScannerParameter);
 		pDsp->N_Mark_Rel(RTC_CARD_NUM_1, 0, -dStartExtLenField);
-		pDsp->nSetScannerParameter(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagSpeed, HEAD1ScannerParameter);
+		pDsp->nSetScannerParameter(RTC_CARD_NUM_1,HEAD1ScannerParameter.flagSpeed, HEAD1ScannerParameter);
 		pDsp->N_Mark_Rel(RTC_CARD_NUM_1, 0, -(dTabHeightField - (stPocketData.dArcOutXPos * dFieldSize / dMmSize)));
-		pDsp->nSetScannerParameter(RTC_CARD_NUM_1, HEAD1ScannerParameter.markSpeed, HEAD1ScannerParameter);
-		n_arc_rel(RTC_CARD_NUM_1, (stPocketData.dArcOutXPos * dFieldSize / dMmSize), (stPocketData.dArcOutYPos * dFieldSize / dMmSize), -90);
+		//pDsp->nSetScannerParameter(RTC_CARD_NUM_1,HEAD1ScannerParameter.markSpeed, HEAD1ScannerParameter);
+		//n_arc_rel(RTC_CARD_NUM_1, (stPocketData.dArcOutXPos * dFieldSize / dMmSize), (stPocketData.dArcOutYPos * dFieldSize / dMmSize), -90);
+		centerX = stPocketData.dArcOutXPos * dFieldSize / dMmSize;
+		centerY = stPocketData.dArcOutYPos * dFieldSize / dMmSize;
+		radius  = 4 * dFieldSize / dMmSize;
 
-		if (i != nFlagCount - 1)
+		// 첫 번째 arc: 현재 위치에서 (centerX, centerY) 기준으로 -45도
+		n_arc_rel(RTC_CARD_NUM_1, centerX, centerY, -(90 - stPocketData.dArcDegree));
+
+		// ★ 두 번째 arc를 위한 현재 위치 보정
+		// 첫 arc 후 현재 위치는 -45도 위치. 새 중심까지 상대 좌표 다시 계산
+
+		angle_rad = -(90 + stPocketData.dArcDegree) * PI / 180.0;
+		currX = centerX + radius * cos(angle_rad); // 현재 x 좌표
+		currY = centerY + radius * sin(angle_rad); // 현재 y 좌표
+
+		dx2 = centerX - currX;
+		dy2 = centerY - currY;
+		pDsp->nSetScannerParameter(RTC_CARD_NUM_1,HEAD1ScannerParameter.markSpeed, HEAD1ScannerParameter);
+		pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.arcFreq, HEAD1ScannerParameter.pulsewidth);
+		pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.arcPower);
+		n_arc_rel(RTC_CARD_NUM_1, dx2, dy2, -stPocketData.dArcDegree);
+
+		if(i != nFlagCount - 1)
 		{
-			pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.nonflagFreq, HEAD1ScannerParameter.pulsewidth);
-			pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.nonflagPower);
+			pDsp->nSetFrequency(RTC_CARD_NUM_1,HEAD1ScannerParameter.nonflagFreq, HEAD1ScannerParameter.pulsewidth);
+			pDsp->nWriteDA1List(RTC_CARD_NUM_1,HEAD1ScannerParameter.nonflagPower);
+		}
+		else
+		{
+			pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagFreq, HEAD1ScannerParameter.pulsewidth);
+			pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagPower);
 		}
 		/////// ARC OUT END
 
@@ -651,13 +694,30 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 		}
 
 		/////// ARC IN START
-		pDsp->nSetScannerParameter(RTC_CARD_NUM_1, HEAD1ScannerParameter.markSpeed, HEAD1ScannerParameter);
-		pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagFreq, HEAD1ScannerParameter.pulsewidth);
-		pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagPower);
-		n_arc_rel(RTC_CARD_NUM_1, (stPocketData.dArcInXPos * dFieldSize / dMmSize), (stPocketData.dArcInYPos * dFieldSize / dMmSize), -90);
+		pDsp->nSetScannerParameter(RTC_CARD_NUM_1,HEAD1ScannerParameter.markSpeed, HEAD1ScannerParameter);
+		pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.arcFreq, HEAD1ScannerParameter.pulsewidth);
+		pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.arcPower);
+		//n_arc_rel(RTC_CARD_NUM_1, (stPocketData.dArcInXPos * dFieldSize / dMmSize), (stPocketData.dArcInYPos * dFieldSize / dMmSize), -90);	
+		centerX = stPocketData.dArcInXPos * dFieldSize / dMmSize;
+		centerY = stPocketData.dArcInYPos * dFieldSize / dMmSize;
+		radius  = 4 * dFieldSize / dMmSize;
+
+		// 첫 번째 arc: 현재 위치에서 (centerX, centerY) 기준으로 -45도
+		n_arc_rel(RTC_CARD_NUM_1, centerX, centerY, -stPocketData.dArcDegree);
+
+		// 첫 arc 후 현재 위치는 -45도 위치. 새 중심까지 상대 좌표 다시 계산
+		angle_rad = -(90-stPocketData.dArcDegree) * PI / 180.0;
+		currX = centerX + radius * cos(angle_rad); // 현재 x 좌표
+		currY = centerY + radius * sin(angle_rad); // 현재 y 좌표
+
+		dx2 = centerX - currX;
+		dy2 = centerY - currY;
+		pDsp->nSetScannerParameter(RTC_CARD_NUM_1,HEAD1ScannerParameter.flagSpeed, HEAD1ScannerParameter);
+		pDsp->nSetFrequency(RTC_CARD_NUM_1,HEAD1ScannerParameter.flagFreq, HEAD1ScannerParameter.pulsewidth);
+		pDsp->nWriteDA1List(RTC_CARD_NUM_1,HEAD1ScannerParameter.flagPower);
+		n_arc_rel(RTC_CARD_NUM_1, dx2, dy2, -(90 - stPocketData.dArcDegree));
 		/////// ARC IN END
 
-		pDsp->nSetScannerParameter(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagSpeed, HEAD1ScannerParameter);
 		pDsp->N_Mark_Rel(RTC_CARD_NUM_1, 0, dTabHeightField - (stPocketData.dArcInYPos * dFieldSize / dMmSize));
 
 		// 2025.01.24 jjsjong
@@ -761,12 +821,31 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 
 	// 탭 하나 가공하기 위해 추가
 	/////// ARC IN START
-	pDsp->nSetScannerParameter(RTC_CARD_NUM_1, HEAD1ScannerParameter.markSpeed, HEAD1ScannerParameter);
-	pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagFreq, HEAD1ScannerParameter.pulsewidth);
-	pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagPower);
-	n_arc_rel(RTC_CARD_NUM_1, (stPocketData.dArcInXPos * dFieldSize / dMmSize), (stPocketData.dArcInYPos * dFieldSize / dMmSize), -90); // 192.86
-	pDsp->nSetScannerParameter(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagSpeed, HEAD1ScannerParameter);
+	pDsp->nSetScannerParameter(RTC_CARD_NUM_1,HEAD1ScannerParameter.markSpeed, HEAD1ScannerParameter);
+	pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.arcFreq, HEAD1ScannerParameter.pulsewidth);
+	pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.arcPower);
+	
+	centerX = stPocketData.dArcInXPos * dFieldSize / dMmSize;
+	centerY = stPocketData.dArcInYPos * dFieldSize / dMmSize;
+	radius  = 4 * dFieldSize / dMmSize;
+
+	// 첫 번째 arc: 현재 위치에서 (centerX, centerY) 기준으로 -45도
+	n_arc_rel(RTC_CARD_NUM_1, centerX, centerY, -stPocketData.dArcDegree);
+
+	// ★ 두 번째 arc를 위한 현재 위치 보정
+	// 첫 arc 후 현재 위치는 -45도 위치. 새 중심까지 상대 좌표 다시 계산
+	angle_rad = -(90-stPocketData.dArcDegree) * PI / 180.0;
+	currX = centerX + radius * cos(angle_rad); // 현재 x 좌표
+	currY = centerY + radius * sin(angle_rad); // 현재 y 좌표
+
+	dx2 = centerX - currX;
+	dy2 = centerY - currY;
+	pDsp->nSetScannerParameter(RTC_CARD_NUM_1,HEAD1ScannerParameter.flagSpeed, HEAD1ScannerParameter);
+	pDsp->nSetFrequency(RTC_CARD_NUM_1,HEAD1ScannerParameter.flagFreq, HEAD1ScannerParameter.pulsewidth);
+	pDsp->nWriteDA1List(RTC_CARD_NUM_1,HEAD1ScannerParameter.flagPower);
+	n_arc_rel(RTC_CARD_NUM_1, dx2, dy2, -(90 - stPocketData.dArcDegree));
 	/////// ARC IN END
+
 	pDsp->N_Mark_Rel(RTC_CARD_NUM_1, 0, dTabHeightField - (stPocketData.dArcInYPos * dFieldSize / dMmSize));
 
 	if (ModeValue == _T("Anode_A") || ModeValue == _T("Anode_B"))
@@ -792,17 +871,42 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 		pDsp->SetFlyXHEAD1(dScaleFactorX);
 
 		/////// ARC OUT START
-		pDsp->nSetScannerParameter(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagExtSpeed, HEAD1ScannerParameter);
+		pDsp->nSetScannerParameter(RTC_CARD_NUM_1,HEAD1ScannerParameter.flagExtSpeed, HEAD1ScannerParameter);
 		pDsp->N_Mark_Rel(RTC_CARD_NUM_1, 0, -dStartExtLenField);
-		pDsp->nSetScannerParameter(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagSpeed, HEAD1ScannerParameter);
+		pDsp->nSetScannerParameter(RTC_CARD_NUM_1,HEAD1ScannerParameter.flagSpeed, HEAD1ScannerParameter);
 		pDsp->N_Mark_Rel(RTC_CARD_NUM_1, 0, -(dTabHeightField - (stPocketData.dArcOutXPos * dFieldSize / dMmSize)));
-		pDsp->nSetScannerParameter(RTC_CARD_NUM_1, HEAD1ScannerParameter.markSpeed, HEAD1ScannerParameter);
-		n_arc_rel(RTC_CARD_NUM_1, (stPocketData.dArcOutXPos * dFieldSize / dMmSize), (stPocketData.dArcOutYPos * dFieldSize / dMmSize), -90);
+		//pDsp->nSetScannerParameter(RTC_CARD_NUM_1,HEAD1ScannerParameter.markSpeed, HEAD1ScannerParameter);
+		//n_arc_rel(RTC_CARD_NUM_1, (stPocketData.dArcOutXPos * dFieldSize / dMmSize), (stPocketData.dArcOutYPos * dFieldSize / dMmSize), -90);
+		centerX = stPocketData.dArcOutXPos * dFieldSize / dMmSize;
+		centerY = stPocketData.dArcOutYPos * dFieldSize / dMmSize;
+		radius  = 4 * dFieldSize / dMmSize;
 
-		if (i != nFlagCount - 1)
+		// 첫 번째 arc: 현재 위치에서 (centerX, centerY) 기준으로 -45도
+		n_arc_rel(RTC_CARD_NUM_1, centerX, centerY, -(90 - stPocketData.dArcDegree));
+
+		// ★ 두 번째 arc를 위한 현재 위치 보정
+		// 첫 arc 후 현재 위치는 -45도 위치. 새 중심까지 상대 좌표 다시 계산
+
+		angle_rad = -(90 +  stPocketData.dArcDegree) * PI / 180.0;
+		currX = centerX + radius * cos(angle_rad); // 현재 x 좌표
+		currY = centerY + radius * sin(angle_rad); // 현재 y 좌표
+
+		dx2 = centerX - currX;
+		dy2 = centerY - currY;
+		pDsp->nSetScannerParameter(RTC_CARD_NUM_1,HEAD1ScannerParameter.markSpeed, HEAD1ScannerParameter);
+		pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.arcFreq, HEAD1ScannerParameter.pulsewidth);
+		pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.arcPower);
+		n_arc_rel(RTC_CARD_NUM_1, dx2, dy2, -stPocketData.dArcDegree);
+
+		if(i != nFlagCount - 1)
 		{
-			pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.nonflagFreq, HEAD1ScannerParameter.pulsewidth);
-			pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.nonflagPower);
+			pDsp->nSetFrequency(RTC_CARD_NUM_1,HEAD1ScannerParameter.nonflagFreq, HEAD1ScannerParameter.pulsewidth);
+			pDsp->nWriteDA1List(RTC_CARD_NUM_1,HEAD1ScannerParameter.nonflagPower);
+		}
+		else
+		{
+			pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagFreq, HEAD1ScannerParameter.pulsewidth);
+			pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagPower);
 		}
 		/////// ARC OUT END
 
@@ -830,10 +934,28 @@ DWORD WINAPI CRunMgr::ExecutePatternSDI_Pouch_Head1(LPVOID lparam)
 		}
 
 		/////// ARC IN START
-		pDsp->nSetScannerParameter(RTC_CARD_NUM_1, HEAD1ScannerParameter.markSpeed, HEAD1ScannerParameter);
-		pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagFreq, HEAD1ScannerParameter.pulsewidth);
-		pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagPower);
-		n_arc_rel(RTC_CARD_NUM_1, (stPocketData.dArcInXPos * dFieldSize / dMmSize), (stPocketData.dArcInYPos * dFieldSize / dMmSize), -90);
+		pDsp->nSetScannerParameter(RTC_CARD_NUM_1,HEAD1ScannerParameter.markSpeed, HEAD1ScannerParameter);
+		pDsp->nSetFrequency(RTC_CARD_NUM_1, HEAD1ScannerParameter.arcFreq, HEAD1ScannerParameter.pulsewidth);
+		pDsp->nWriteDA1List(RTC_CARD_NUM_1, HEAD1ScannerParameter.arcPower);
+		// n_arc_rel(RTC_CARD_NUM_1, (stPocketData.dArcInXPos * dFieldSize / dMmSize), (stPocketData.dArcInYPos * dFieldSize / dMmSize), -90);	
+		centerX = stPocketData.dArcInXPos * dFieldSize / dMmSize;
+		centerY = stPocketData.dArcInYPos * dFieldSize / dMmSize;
+		radius  = 4 * dFieldSize / dMmSize;
+
+		// 첫 번째 arc: 현재 위치에서 (centerX, centerY) 기준으로 -45도
+		n_arc_rel(RTC_CARD_NUM_1, centerX, centerY, -stPocketData.dArcDegree);
+
+		// 첫 arc 후 현재 위치는 -45도 위치. 새 중심까지 상대 좌표 다시 계산
+		angle_rad = -(90 - stPocketData.dArcDegree) * PI / 180.0;
+		currX = centerX + radius * cos(angle_rad); // 현재 x 좌표
+		currY = centerY + radius * sin(angle_rad); // 현재 y 좌표
+
+		dx2 = centerX - currX;
+		dy2 = centerY - currY;
+		pDsp->nSetScannerParameter(RTC_CARD_NUM_1,HEAD1ScannerParameter.flagSpeed, HEAD1ScannerParameter);
+		pDsp->nSetFrequency(RTC_CARD_NUM_1,HEAD1ScannerParameter.flagFreq, HEAD1ScannerParameter.pulsewidth);
+		pDsp->nWriteDA1List(RTC_CARD_NUM_1,HEAD1ScannerParameter.flagPower);
+		n_arc_rel(RTC_CARD_NUM_1, dx2, dy2, -(90 - stPocketData.dArcDegree));
 		/////// ARC IN END
 
 		pDsp->nSetScannerParameter(RTC_CARD_NUM_1, HEAD1ScannerParameter.flagSpeed, HEAD1ScannerParameter);

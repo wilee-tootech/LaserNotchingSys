@@ -175,4 +175,6 @@ public:
 	void ClickCttextHead1ArcSpeed();
 	void ClickCttextHead1PatternShift();
 	void ClickCttextHead1PlcOffset();
+	void ClickCttextHead1ArcPower();
+	void ClickCttextHead1ArcFrequency();
 };

@@ -211,10 +211,12 @@ void IniUtil::LoadParameterIni(const CString section, CString filePath, SingleSc
 	data.firstflagLineExt = fileMgr.ReadDouble(section, _T("firstflagLineExt"), filePath);
 	data.flagExtSpeed = fileMgr.ReadDouble(section, _T("flagExtSpeed"), filePath);
 	data.flagFreq = fileMgr.ReadDouble(section, _T("flagFreq"), filePath);
+	data.arcFreq = fileMgr.ReadDouble(section, _T("arcFreq"), filePath);
 	data.flagLineExt = fileMgr.ReadDouble(section, _T("flagLineExt"), filePath);
 	data.flagLineSpeed = fileMgr.ReadDouble(section, _T("flagLineSpeed"), filePath);
 	data.flagOffset = fileMgr.ReadDouble(section, _T("flagOffset"), filePath);
 	data.flagPower = fileMgr.ReadDouble(section, _T("flagPower"), filePath);
+	data.arcPower = fileMgr.ReadDouble(section, _T("arcPower"), filePath);
 	data.flagSpeed = fileMgr.ReadDouble(section, _T("flagSpeed"), filePath);
 	data.jumpDelay = fileMgr.ReadDouble(section, _T("jumpDelay"), filePath);
 	data.jumpSpeed = fileMgr.ReadDouble(section, _T("jumpSpeed"), filePath);
@@ -285,10 +287,12 @@ void IniUtil::SaveParameterIni(const CString section, CString filePath, SingleSc
 	fileMgr.WriteDouble(section, data.firstflagLineExt, _T("firstflagLineExt"), filePath);
 	fileMgr.WriteDouble(section, data.flagExtSpeed, _T("flagExtSpeed"), filePath);
 	fileMgr.WriteDouble(section, data.flagFreq, _T("flagFreq"), filePath);
+	fileMgr.WriteDouble(section, data.arcFreq, _T("arcFreq"), filePath);
 	fileMgr.WriteDouble(section, data.flagLineExt, _T("flagLineExt"), filePath);
 	fileMgr.WriteDouble(section, data.flagLineSpeed, _T("flagLineSpeed"), filePath);
 	fileMgr.WriteDouble(section, data.flagOffset, _T("flagOffset"), filePath);
 	fileMgr.WriteDouble(section, data.flagPower, _T("flagPower"), filePath);
+	fileMgr.WriteDouble(section, data.arcPower, _T("arcPower"), filePath);
 	fileMgr.WriteDouble(section, data.flagSpeed, _T("flagSpeed"), filePath);
 	fileMgr.WriteDouble(section, data.jumpDelay, _T("jumpDelay"), filePath);
 	fileMgr.WriteDouble(section, data.jumpSpeed, _T("jumpSpeed"), filePath);

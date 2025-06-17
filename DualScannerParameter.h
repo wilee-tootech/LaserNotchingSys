@@ -27,9 +27,11 @@ struct SingleScannerParameter
 
 	double flagPower;
 	double nonflagPower;
+	double arcPower;
 
 	double flagFreq;
 	double nonflagFreq;
+	double arcFreq;
 
 	double pulsewidth;
 
@@ -59,7 +61,7 @@ struct SingleScannerParameter
 	void clear()
 	{
 		flagSpeed = 0;flagExtSpeed=0;flagLineSpeed=0;nonflagLineExtSpeed = 0;nonflagInoutSpeed=0;nonflagInoutExtSpeed=0;jumpSpeed=0;markSpeed=0;
-		polygonDelay=0;firstflagLineExt = 0;flagLineExt = 0; cycleOffset=0;startExtLen=0;flagPower=0;nonflagPower=0;flagFreq=0;nonflagFreq=0;pulsewidth=0; flagOffset=0;
+		polygonDelay=0;firstflagLineExt = 0;flagLineExt = 0; cycleOffset=0;startExtLen=0;flagPower=0;nonflagPower=0;arcPower=0;flagFreq=0;nonflagFreq=0;arcFreq=0;pulsewidth=0; flagOffset=0;
 		xOffset = 0; yOffset = 0; EncoderOffset = 0; notchOffset = 0; ngLength = 0; dCuttingOffset = 1.5; dMinFlagLeng = 0; dNGSensorLeng = 0;dACSensorLeng=0; dPlcOffset=0;// ±âº»°ª
 	}
 };
